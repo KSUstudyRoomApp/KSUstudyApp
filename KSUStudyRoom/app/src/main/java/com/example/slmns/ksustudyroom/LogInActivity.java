@@ -42,17 +42,6 @@ public class LogInActivity extends AppCompatActivity {
         final Button loginButton = (Button) findViewById(R.id.loginButton);
         final TextView registerLink = (TextView) findViewById(R.id.loginRegisterTextView);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                LogIn(String.valueOf(loginUsername.getText()), String.valueOf(loginPassword.getText()));
-                if (userName.equals(loginUsername) && Password.equals(loginPassword)) {
-                    Intent loginItent = new Intent(LogInActivity.this, RegisterActivity.class);
-                    LogInActivity.this.startActivity(loginItent);
-                }
-            }
-        });
 
         /**
          * Switches to the register page on click.
@@ -66,14 +55,14 @@ public class LogInActivity extends AppCompatActivity {
         });
 
     }
-
+    /**
     public void LogInQuery() {
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-              
+
             }
         }).start();
-    }
+    } */
 }
