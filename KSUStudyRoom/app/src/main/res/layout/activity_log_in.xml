@@ -57,13 +57,14 @@
             android:textColorLink="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/loginToTestLink"
+            android:id="@+id/loginToHomeLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/loginRegisterTextView"
-            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/loginRegisterTextView"
+            android:layout_below="@+id/loginRegisterTextView"
+            android:layout_marginTop="23dp"
             android:text="TextView"
-            tools:text="To Test Page" />
+            tools:text="To Home Page" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

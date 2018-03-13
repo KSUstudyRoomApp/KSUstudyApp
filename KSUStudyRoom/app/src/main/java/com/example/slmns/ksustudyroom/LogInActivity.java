@@ -30,6 +30,7 @@ public class LogInActivity extends AppCompatActivity {
         final EditText loginPassword = (EditText) findViewById(R.id.loginPasswordText);
         final Button loginButton = (Button) findViewById(R.id.loginButton);
         final TextView registerLink = (TextView) findViewById(R.id.loginRegisterTextView);
+        final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
 
         /**
          * Switches to the register page on click.
@@ -41,5 +42,9 @@ public class LogInActivity extends AppCompatActivity {
                 LogInActivity.this.startActivity(regiserIntent);
             }
         });
+
+
+
+
     }
 }
