@@ -7,11 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.models.nosql.UserAccountsDO;
 import com.amazonaws.mobile.auth.core.IdentityManager;
-
-
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
 
 /**
@@ -33,6 +34,14 @@ IdentityManager identityManager;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        // Instantiate a AmazonDynamoDBMapperClient
+        AmazonDynamoDBClient dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
+        this.dynamoDBMapper = DynamoDBMapper.builder()
+                .dynamoDBClient(dynamoDBClient)
+                .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
+                .build();
+
         final EditText registerUserName = (EditText) findViewById(R.id.registerUsernameText);
         final EditText registerEmail= (EditText) findViewById(R.id.registerEmailText);
         final EditText registerPassword = (EditText) findViewById(R.id.registerPasswordText);
@@ -44,8 +53,8 @@ IdentityManager identityManager;
             @Override
             public void onClick(View view) {
 
-                //createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
-                createUser("1","testName", "test@test.com", "testword");
+                createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
+                //createUser("testName", "test@test.com", "testword");
                 //name =String.valueOf(registerUserName.getText());
                // email = String.valueOf(registerEmail.getText());
                 //password = String.valueOf(registerPassword.getText());
@@ -67,11 +76,11 @@ IdentityManager identityManager;
 
     }
 
-    public void createUser(String Id, String userName, String email, String password) {
+    public void createUser(String userName, String email, String password) {
 
         final UserAccountsDO userItem = new UserAccountsDO();
 
-        userItem.setUserId(Id);
+        userItem.setUserId(userName);
 
         userItem.setUserName(userName);
         userItem.setEmail(email);
