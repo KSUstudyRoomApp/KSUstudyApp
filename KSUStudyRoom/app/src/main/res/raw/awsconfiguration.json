@@ -12,6 +12,14 @@
   "IdentityManager": {
     "Default": {}
   },
+  "CognitoUserPool": {
+    "Default": {
+      "PoolId": "us-east-1_kllw32Pee",
+      "AppClientId": "3e202cnro2mj5vdiamlp2djmsb",
+      "AppClientSecret": "gg2bjhrn9e8951f6deplf93ltkiai10bl3fot8gs153ln2knljc",
+      "Region": "us-east-1"
+    }
+  },
   "DynamoDBObjectMapper": {
     "Default": {
       "Region": "us-east-1"

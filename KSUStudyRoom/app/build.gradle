@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.slmns.ksustudyroom"
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -29,4 +29,12 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile ('com.amazonaws:aws-android-sdk-mobile-client:2.6.7@aar') { transitive = true; }
     compile 'com.amazonaws:aws-android-sdk-ddb-mapper:2.6.+'
+    //Cognito UserPools for SignIn
+    compile 'com.android.support:support-v4:26.+'
+    compile ('com.amazonaws:aws-android-sdk-auth-userpools:2.6.+@aar') { transitive = true; }
+
+    //Sign in UI Library
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile ('com.amazonaws:aws-android-sdk-auth-ui:2.6.+@aar') { transitive = true; }
+
 }
