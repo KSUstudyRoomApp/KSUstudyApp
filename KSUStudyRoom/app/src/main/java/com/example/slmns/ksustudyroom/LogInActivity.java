@@ -32,6 +32,15 @@ public class LogInActivity extends AppCompatActivity {
         final TextView registerLink = (TextView) findViewById(R.id.loginRegisterTextView);
         final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
 
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(LogInActivity.this, HomeActivity.class);
+                LogInActivity.this.startActivity(homeIntent);
+            }
+        });
+
         /**
          * Switches to the register page on click.
          */

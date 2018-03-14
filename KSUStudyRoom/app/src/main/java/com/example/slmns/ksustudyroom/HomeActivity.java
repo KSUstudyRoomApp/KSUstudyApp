@@ -13,15 +13,15 @@ import android.widget.TextView;
 import static com.example.slmns.ksustudyroom.R.layout.activity_home;
 
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "MyActivity";
     private TextView mGestureText;
     private GestureDetector mGestureDetector;
-    final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
+    //final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
+        //final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
         super.onCreate(savedInstanceState);
         setContentView(activity_home);
 
