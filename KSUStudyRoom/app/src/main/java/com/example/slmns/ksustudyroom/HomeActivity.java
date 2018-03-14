@@ -8,7 +8,10 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import static com.example.slmns.ksustudyroom.R.layout.activity_home;
 
@@ -24,6 +27,18 @@ public class HomeActivity extends AppCompatActivity {
         //final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
         super.onCreate(savedInstanceState);
         setContentView(activity_home);
+
+        final TextView swipedown = (TextView) findViewById(R.id.swipDownTextView);
+
+        swipedown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(HomeActivity.this, ChooseCampusActivity.class);
+                HomeActivity.this.startActivity(homeIntent);
+            }
+        });
+
+
 
         mGestureText = (TextView) findViewById(R.id.gestureStatus);
 
