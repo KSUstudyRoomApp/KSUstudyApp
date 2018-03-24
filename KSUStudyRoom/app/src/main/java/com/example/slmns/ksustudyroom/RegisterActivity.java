@@ -52,8 +52,19 @@ IdentityManager identityManager;
 
             @Override
             public void onClick(View view) {
+                try{
+                    if(registerUserName.getText().toString().isEmpty()){
+                        throw new Exception();
+                    }
+                    else{
+                        createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
+                    }
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
 
-                createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
+
                 //createUser("testName", "test@test.com", "testword");
                 //name =String.valueOf(registerUserName.getText());
                // email = String.valueOf(registerEmail.getText());
