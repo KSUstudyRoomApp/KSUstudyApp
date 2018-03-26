@@ -95,11 +95,11 @@ IdentityManager identityManager;
                         invalidPasswordLabel.setVisibility(View.INVISIBLE);
                     }
 
-                    if(missingField == true){
+                    if(missingField){
                         throw new NullPointerException();
                     }
                     else{
-                        //user is registered here
+                        //user is created here
                         createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
                     }
                 }
@@ -114,19 +114,6 @@ IdentityManager identityManager;
                 //password = String.valueOf(registerPassword.getText());
             }
         });
-
-        //begin_test code feel free to delete.
-        final TextView registerToTestLink = (TextView) findViewById(R.id.registerToTestLink);
-
-
-        registerToTestLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent regiserIntent = new Intent(RegisterActivity.this, TestActivity.class);
-                RegisterActivity.this.startActivity(regiserIntent);
-            }
-        });
-        //end_test code feel free to delete.
 
     }
 

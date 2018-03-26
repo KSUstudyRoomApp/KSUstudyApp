@@ -27,9 +27,9 @@
             android:id="@+id/loginPasswordText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/loginUsernameText"
             android:layout_alignStart="@+id/loginUsernameText"
             android:layout_below="@+id/loginUsernameText"
+            android:layout_marginTop="31dp"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword" />
@@ -50,8 +50,9 @@
             android:id="@+id/loginRegisterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/loginButton"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="39dp"
             android:text="Register here"
             android:textColor="@android:color/holo_blue_dark"
             android:textColorLink="@color/colorPrimary" />
@@ -60,12 +61,33 @@
             android:id="@+id/loginToHomeLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/loginRegisterTextView"
             android:layout_alignStart="@+id/loginRegisterTextView"
             android:layout_below="@+id/loginRegisterTextView"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="57dp"
             android:text="TextView"
             android:visibility="invisible"
             tools:text="To Home Page" />
+
+        <TextView
+            android:id="@+id/invalidLoginUserNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginUsernameText"
+            android:layout_centerHorizontal="true"
+            android:text="Missing username"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible"
+            tools:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/invalidLoginPasswordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/invalidLoginUserNameLabel"
+            android:layout_below="@+id/loginPasswordText"
+            android:text="Missing password"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible"
+            tools:visibility="invisible" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

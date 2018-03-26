@@ -11,6 +11,7 @@ import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
+import org.w3c.dom.Text;
 
 
 /**
@@ -31,13 +32,44 @@ public class LogInActivity extends AppCompatActivity {
         final Button loginButton = (Button) findViewById(R.id.loginButton);
         final TextView registerLink = (TextView) findViewById(R.id.loginRegisterTextView);
         final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
+        final TextView invalidLoginUsernNameLabel = (TextView) findViewById(R.id.invalidLoginUserNameLabel);
+        final TextView invalidLoginPasswordLabel = (TextView) findViewById(R.id.invalidLoginPasswordLabel);
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(LogInActivity.this, HomeActivity.class);
-                LogInActivity.this.startActivity(homeIntent);
+                boolean missingField = false;
+              try
+              {
+                  if(loginUsername.getText().toString().isEmpty()){
+                      invalidLoginUsernNameLabel.setVisibility(View.VISIBLE);
+                      missingField = true;
+                  }
+                  else{
+                      invalidLoginUsernNameLabel.setVisibility(View.INVISIBLE);
+                  }
+
+                  if(loginPassword.getText().toString().isEmpty()){
+                      invalidLoginPasswordLabel.setVisibility(View.VISIBLE);
+                      missingField = true;
+                  }
+                  else{
+                      invalidLoginPasswordLabel.setVisibility(View.INVISIBLE);
+                  }
+
+                  if(missingField){
+                      throw new Exception();
+                  }
+                  else{
+                      Intent homeIntent = new Intent(LogInActivity.this, HomeActivity.class);
+                      LogInActivity.this.startActivity(homeIntent);
+                  }
+              }
+              catch (Exception e){
+                  e.printStackTrace();
+              }
+
             }
         });
 
@@ -51,9 +83,6 @@ public class LogInActivity extends AppCompatActivity {
                 LogInActivity.this.startActivity(regiserIntent);
             }
         });
-
-
-
 
     }
 }
