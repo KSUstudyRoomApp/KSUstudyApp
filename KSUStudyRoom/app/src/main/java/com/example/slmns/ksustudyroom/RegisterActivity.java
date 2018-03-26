@@ -1,6 +1,8 @@
 package com.example.slmns.ksustudyroom;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,8 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.models.nosql.UserAccountsDO;
 import com.amazonaws.mobile.auth.core.IdentityManager;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -46,24 +50,63 @@ IdentityManager identityManager;
         final EditText registerEmail= (EditText) findViewById(R.id.registerEmailText);
         final EditText registerPassword = (EditText) findViewById(R.id.registerPasswordText);
         final Button registerButton = (Button) findViewById(R.id.registerButton);
+        final TextView invalidUsernameLabel = (TextView) findViewById(R.id.invalidUsernameLabel);
+        final TextView invalidEmailLabel = (TextView) findViewById(R.id.invalidEmailLabel);
+        final TextView invalidPasswordLabel = (TextView) findViewById(R.id.invalidPasswordLabel);
 
         //Registers or submits the user's data.
         registerButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
+                //--begin validation code
+                boolean missingField = false;
                 try{
                     if(registerUserName.getText().toString().isEmpty()){
-                        throw new Exception();
+                        invalidUsernameLabel.setVisibility(View.VISIBLE);
+                        missingField = true;
                     }
                     else{
+                        invalidUsernameLabel.setVisibility(View.INVISIBLE);
+                    }
+
+                    if(registerEmail.getText().toString().isEmpty()){
+                        invalidEmailLabel.setText("Missing email");
+                        invalidEmailLabel.setVisibility(View.VISIBLE);
+
+                        missingField = true;
+                    }
+                   else if(registerEmail.getText().toString().contains("kennesaw.edu") == false){
+
+                        invalidEmailLabel.setText("Invalid email");
+                        invalidEmailLabel.setVisibility(View.VISIBLE);
+
+                    }
+                    else{
+                       invalidEmailLabel.setVisibility(View.INVISIBLE);
+                    }
+
+
+                    if(registerPassword.getText().toString().isEmpty()){
+                        invalidPasswordLabel.setVisibility(View.VISIBLE);
+                        missingField = true;
+                    }
+                    else{
+                        invalidPasswordLabel.setVisibility(View.INVISIBLE);
+                    }
+
+                    if(missingField == true){
+                        throw new NullPointerException();
+                    }
+                    else{
+                        //user is registered here
                         createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
                     }
                 }
-                catch(Exception e){
+                catch(NullPointerException e){
                     e.printStackTrace();
                 }
-
+                //--end of validation code
 
                 //createUser("testName", "test@test.com", "testword");
                 //name =String.valueOf(registerUserName.getText());
