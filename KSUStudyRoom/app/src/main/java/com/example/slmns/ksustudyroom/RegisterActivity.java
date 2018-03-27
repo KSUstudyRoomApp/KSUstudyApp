@@ -101,6 +101,17 @@ IdentityManager identityManager;
                     else{
                         //user is created here
                         createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
+
+                        /**
+                         * Switches to the login page after registering.
+                         */
+                        registerButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent loginIntent = new Intent(RegisterActivity.this, LogInActivity.class);
+                                RegisterActivity.this.startActivity(loginIntent);
+                            }
+                        });
                     }
                 }
                 catch(NullPointerException e){
