@@ -61,6 +61,7 @@ IdentityManager identityManager;
             public void onClick(View view) {
                 //--begin validation code
                 boolean missingField = false;
+                boolean invalidEmailEntered = false;
                 try{
                     if(registerUserName.getText().toString().isEmpty()){
                         invalidUsernameLabel.setVisibility(View.VISIBLE);
@@ -80,7 +81,7 @@ IdentityManager identityManager;
 
                         invalidEmailLabel.setText("Invalid email");
                         invalidEmailLabel.setVisibility(View.VISIBLE);
-
+                        invalidEmailEntered = true;
                     }
                     else{
                        invalidEmailLabel.setVisibility(View.INVISIBLE);
@@ -97,6 +98,9 @@ IdentityManager identityManager;
 
                     if(missingField){
                         throw new NullPointerException();
+                    }
+                    else if(invalidEmailEntered){
+                        throw new IllegalArgumentException();
                     }
                     else{
                         //user is created here
@@ -115,6 +119,9 @@ IdentityManager identityManager;
                     }
                 }
                 catch(NullPointerException e){
+                    e.printStackTrace();
+                }
+                catch(IllegalArgumentException e){
                     e.printStackTrace();
                 }
                 //--end of validation code
