@@ -23,7 +23,8 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".ChooseCampusActivity" />
         <activity android:name=".KennesawCampus" />
-        <activity android:name=".MariettaCampus"></activity>
+        <activity android:name=".MariettaCampus" />
+        <activity android:name=".StartStudyGroupActivity"></activity>
     </application>
 
 </manifest>
