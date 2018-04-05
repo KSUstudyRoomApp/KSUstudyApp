@@ -34,6 +34,7 @@ public class LogInActivity extends AppCompatActivity {
         final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
         final TextView invalidLoginUsernNameLabel = (TextView) findViewById(R.id.invalidLoginUserNameLabel);
         final TextView invalidLoginPasswordLabel = (TextView) findViewById(R.id.invalidLoginPasswordLabel);
+        final TextView toStudyGroupLink = (TextView) findViewById(R.id.toStudyGroupLink);
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +80,15 @@ public class LogInActivity extends AppCompatActivity {
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regiserIntent = new Intent(LogInActivity.this, RegisterActivity.class);
-                LogInActivity.this.startActivity(regiserIntent);
+                Intent registerIntent = new Intent(LogInActivity.this, RegisterActivity.class);
+                LogInActivity.this.startActivity(registerIntent);
+            }
+        });
+
+        toStudyGroupLink.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent studyGroupIntent = new Intent(LogInActivity.this,StartStudyGroupActivity.class );
+                LogInActivity.this.startActivity(studyGroupIntent);
             }
         });
 

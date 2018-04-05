@@ -87,7 +87,6 @@ IdentityManager identityManager;
                        invalidEmailLabel.setVisibility(View.INVISIBLE);
                     }
 
-
                     if(registerPassword.getText().toString().isEmpty()){
                         invalidPasswordLabel.setVisibility(View.VISIBLE);
                         missingField = true;
