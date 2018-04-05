@@ -61,7 +61,7 @@ IdentityManager identityManager;
             public void onClick(View view) {
                 //--begin validation code
                 boolean missingField = false;
-                
+
                 try{
                     if(registerUserName.getText().toString().isEmpty()){
                         invalidUsernameLabel.setVisibility(View.VISIBLE);
@@ -116,9 +116,6 @@ IdentityManager identityManager;
                     }
                 }
                 catch(NullPointerException e){
-                    e.printStackTrace();
-                }
-                catch(IllegalArgumentException e){
                     e.printStackTrace();
                 }
                 //--end of validation code
