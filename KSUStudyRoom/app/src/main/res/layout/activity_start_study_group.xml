@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="37dp"
             android:ems="10"
             android:hint="Group Name"
             android:inputType="textPersonName" />
@@ -29,7 +29,7 @@
             android:layout_height="96dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="137dp"
+            android:layout_marginTop="111dp"
             android:ems="10"
             android:inputType="textMultiLine"
             tools:foregroundTint="?attr/colorError"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="109dp"
+            android:layout_marginBottom="28dp"
             android:layout_marginStart="42dp"
             android:text="Submit" />
 
@@ -53,5 +53,25 @@
             android:layout_alignTop="@+id/submitStudyGroupButton"
             android:layout_marginEnd="60dp"
             android:text="Cancel" />
+
+        <EditText
+            android:id="@+id/addMemberTextBox"
+            android:layout_width="242dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="212dp"
+            android:ems="10"
+            android:hint="Group member's username"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/addMemberButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="125dp"
+            android:text="Add User" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
