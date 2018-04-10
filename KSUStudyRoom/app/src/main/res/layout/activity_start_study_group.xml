@@ -74,5 +74,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="156dp"
             android:text="Add User" />
+
+        <TextView
+            android:id="@+id/confirmAddedUserText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="124dp" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
