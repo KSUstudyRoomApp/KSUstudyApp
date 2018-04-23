@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context="com.example.slmns.ksustudyroom.LogInActivity">
 
     <RelativeLayout
@@ -20,6 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="33dp"
             android:ems="10"
+            android:fadingEdge="none"
             android:hint="Username"
             android:inputType="textPersonName" />
 
