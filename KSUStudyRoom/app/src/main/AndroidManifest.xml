@@ -22,24 +22,25 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".ChooseCampusActivity" />
-        <activity android:name=".KennesawCampus" />
         <activity android:name=".MariettaCampus" />
-        <activity android:name=".StartStudyGroupActivity"></activity>
+        <activity android:name=".StartStudyGroupActivity" />
 
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <service
-            android:name=".MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
-
+        <activity android:name=".BookingDetailsActivity" />
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".HomeV2Activity" />
+        <activity android:name=".BookingConfirmationActivity" />
+        <activity android:name=".KennesawCampus"></activity>
     </application>
 
 </manifest>

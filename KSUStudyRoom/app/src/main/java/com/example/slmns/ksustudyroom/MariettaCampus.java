@@ -2,13 +2,14 @@ package com.example.slmns.ksustudyroom;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class MariettaCampus extends Activity {
+public class MariettaCampus extends AppCompatActivity {
     private WebView webView;
 
     @Override
@@ -20,7 +21,8 @@ public class MariettaCampus extends Activity {
         webView = (WebView) findViewById(R.id.mariettaWebView);
         webView.setWebViewClient(new WebViewClient());
         //webView.loadUrl("http://library.kennesaw.edu/services/studyrooms.php");
-        webView.loadUrl("http://kennesaw.libcal.com/booking/studyroomsM");
+        //webView.loadUrl("http://kennesaw.libcal.com/booking/studyroomsM");
+        webView.loadUrl("http://kennesaw.libcal.com/rooms_acc.php?gid=12406");
 
         //add Websettings like js
         WebSettings webSettings = webView.getSettings();

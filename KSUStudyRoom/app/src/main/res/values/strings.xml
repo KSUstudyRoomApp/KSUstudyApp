@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KSUStudyRoom</string>
+    <string name="app_name">KSU Study Room</string>
     <string name="title_activity_sign_in">SignInActivity</string>
 
     <string name="main_Text">Welcome to the KSU Study Room!</string>
@@ -12,8 +12,10 @@
     <string name="Location"></string>
     <string name="Time"></string>
     <string name="Group"></string>
-
+    <string name="hello_world">Loading ...</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_kennesaw_campus">Kennesaw Campus</string>
     <string name="title_activity_marietta_campus">Marietta Campus</string>
+    <string name="addEvent">Add Reservation</string>
+    <string name="viewEvent">Show Reservation</string>
 </resources>

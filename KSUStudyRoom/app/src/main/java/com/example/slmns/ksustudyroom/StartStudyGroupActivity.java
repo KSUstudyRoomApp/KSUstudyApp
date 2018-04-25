@@ -21,6 +21,13 @@ public class StartStudyGroupActivity extends AppCompatActivity {
 
         this.groupMembers = new ArrayList();
 
+        RegisterActivity registerActivity = new RegisterActivity();
+
+        //String username = registerActivity.getUserName();
+
+       // String username2 = RegisterActivity.getUserName();
+       // String username3 = RegisterActivity.userName;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_study_group);
 

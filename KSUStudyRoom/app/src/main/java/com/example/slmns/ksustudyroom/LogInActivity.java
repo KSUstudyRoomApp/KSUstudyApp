@@ -8,10 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.amazonaws.mobile.client.AWSMobileClient;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-
-import org.w3c.dom.Text;
 
 
 /**
@@ -29,7 +25,7 @@ public class LogInActivity extends AppCompatActivity {
 
         final EditText loginUsername = (EditText) findViewById(R.id.loginUsernameText);
         final EditText loginPassword = (EditText) findViewById(R.id.loginPasswordText);
-        final Button loginButton = (Button) findViewById(R.id.loginButton);
+        final Button loginButton = (Button) findViewById(R.id.kennesawBookingButton);
         final TextView registerLink = (TextView) findViewById(R.id.loginRegisterTextView);
         final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
         final TextView invalidLoginUsernNameLabel = (TextView) findViewById(R.id.invalidLoginUserNameLabel);
@@ -63,7 +59,7 @@ public class LogInActivity extends AppCompatActivity {
                       throw new Exception();
                   }
                   else{
-                      Intent homeIntent = new Intent(LogInActivity.this, HomeActivity.class);
+                      Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
                       LogInActivity.this.startActivity(homeIntent);
                   }
               }

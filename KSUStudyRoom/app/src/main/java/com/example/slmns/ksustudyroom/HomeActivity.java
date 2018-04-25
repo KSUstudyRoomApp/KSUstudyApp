@@ -30,6 +30,8 @@ public class HomeActivity extends AppCompatActivity {
 
         final TextView swipedown = (TextView) findViewById(R.id.swipDownTextView);
 
+
+
         swipedown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

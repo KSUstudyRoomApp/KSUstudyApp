@@ -11,11 +11,12 @@
         <item name="android:windowBackground">@color/softWhite</item>
         <item name="android:colorBackground">@color/red</item>
         <item name="android:editTextBackground">@drawable/textinputborder</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+      <!--  <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>-->
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

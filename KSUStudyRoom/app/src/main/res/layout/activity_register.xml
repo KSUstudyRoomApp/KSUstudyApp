@@ -52,6 +52,7 @@
             android:layout_alignStart="@+id/registerPasswordText"
             android:layout_below="@+id/invalidPasswordLabel"
             android:layout_marginTop="21dp"
+            android:background="@color/gold"
             android:text="Register" />
 
         <TextView

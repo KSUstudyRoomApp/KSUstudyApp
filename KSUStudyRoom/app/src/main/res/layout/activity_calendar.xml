@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    >
+
+
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="309dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="17dp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/viewEvent"
+        android:layout_width="281dp"
+
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:background="@color/gold"
+        android:text="@string/viewEvent"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/addEventButton"
+        android:layout_width="281dp"
+        android:layout_height="50dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="78dp"
+        android:background="@color/gold"
+        android:text="@string/addEvent"
+        android:visibility="visible" />
+
+
+</RelativeLayout>

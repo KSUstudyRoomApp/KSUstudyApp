@@ -9,14 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.app.Activity;
 
-public class ChooseCampusActivity extends Activity {
+public class ChooseCampusActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_campus);
 
-        //Select Campus - Kennesaw WEBVIEW Button
+        //Select Campus - Kennesaw  Button
         Button kennesawCampusButton = (Button) findViewById(R.id.kennesawBtn);
         kennesawCampusButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,7 +26,7 @@ public class ChooseCampusActivity extends Activity {
             }
         });
 
-        //Select Campus - Marietta WEBVIEW Button
+        //Select Campus - Marietta  Button
         Button mariettaCampusButton = (Button) findViewById(R.id.mariettaBtn);
         mariettaCampusButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,27 +35,5 @@ public class ChooseCampusActivity extends Activity {
                 startActivity(startIntent);
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_choose_campus, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

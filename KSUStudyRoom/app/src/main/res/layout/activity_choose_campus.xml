@@ -7,22 +7,24 @@
 
 
     <Button
+        android:id="@+id/kennesawBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kennesaw"
-        android:id="@+id/kennesawBtn"
+        android:layout_alignEnd="@+id/mariettaBtn"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
-        android:layout_alignEnd="@+id/mariettaBtn"
-        android:layout_alignParentStart="true" />
+        android:background="@color/gold"
+        android:text="Kennesaw" />
 
     <Button
+        android:id="@+id/mariettaBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Marietta"
-        android:id="@+id/mariettaBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/kennesawBtn"
         android:layout_marginTop="76dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:background="@color/gold"
+        android:text="Marietta" />
 </RelativeLayout>
