@@ -58,6 +58,8 @@ public class PublicMessagingActivity extends AppCompatActivity {
 
                 mesage_root.updateChildren(map2);
 
+                inputMessage.getText().clear();
+
             }
         });
 
