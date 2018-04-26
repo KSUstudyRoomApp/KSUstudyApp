@@ -10,6 +10,7 @@ public class HomeV2Activity extends AppCompatActivity {
  Button reserveRoomButton;
  Button calendarButton;
  Button chatButton;
+ Button studyGroupButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,7 @@ public class HomeV2Activity extends AppCompatActivity {
         this.reserveRoomButton = findViewById(R.id.reserveRoomButton);
         this.calendarButton = findViewById(R.id.calendarButton);
         this.chatButton = findViewById(R.id.chatButton);
+        this.studyGroupButton = findViewById(R.id.toStudyGroupsButton);
 
         reserveRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,16 @@ public class HomeV2Activity extends AppCompatActivity {
                 startActivity(calendarIntent);
             }
         });
+
+        studyGroupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent studyGroupIntent = new Intent(getApplicationContext(), StudyGroupActivityV2.class);
+                startActivity(studyGroupIntent);
+            }
+        });
+
+
 
        /* chatButton.setOnClickListener(new View.OnClickListener() {
             @Override

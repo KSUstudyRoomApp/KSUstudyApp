@@ -40,7 +40,12 @@
         <activity android:name=".CalendarActivity" />
         <activity android:name=".HomeV2Activity" />
         <activity android:name=".BookingConfirmationActivity" />
-        <activity android:name=".KennesawCampus"></activity>
+        <activity android:name=".KennesawCampus" />
+        <activity android:name=".PublicMessagingActivity"/>
+        <activity android:name=".StudyGroupActivityV2">
+
+        </activity>
+
     </application>
 
 </manifest>

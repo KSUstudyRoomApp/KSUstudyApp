@@ -38,8 +38,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="137dp"
+            android:layout_marginBottom="54dp"
             android:background="@color/gold"
             android:text="Chat" />
+
+        <Button
+            android:id="@+id/toStudyGroupsButton"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="162dp"
+            android:background="@color/gold"
+            android:text="Study Groups" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
