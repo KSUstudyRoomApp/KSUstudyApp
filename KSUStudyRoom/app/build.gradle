@@ -38,7 +38,7 @@ dependencies {
     api 'com.google.firebase:firebase-messaging:15.0.0'
     implementation 'com.firebaseui:firebase-ui:3.3.1'
     implementation files('libs/jsoup-1.11.2.jar')
-    compile 'com.google.firebase:firebase-core:15.0.0'
+    implementation 'com.google.firebase:firebase-core:15.0.0'
 
 }
 apply plugin: 'com.google.gms.google-services'

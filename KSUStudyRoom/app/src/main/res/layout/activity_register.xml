@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="53dp"
+            android:layout_marginTop="126dp"
             android:ems="10"
             android:hint="Username"
             android:inputType="textPersonName" />
@@ -27,8 +27,9 @@
             android:id="@+id/registerPasswordText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/registerEmailText"
-            android:layout_below="@+id/invalidEmailLabel"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="217dp"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword" />
@@ -37,8 +38,9 @@
             android:id="@+id/registerEmailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/registerUsernameText"
-            android:layout_below="@+id/invalidUsernameLabel"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="185dp"
             android:ems="10"
             android:hint="KSUEmail"
             android:inputType="textEmailAddress"
@@ -48,10 +50,9 @@
             android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/registerPasswordText"
-            android:layout_alignStart="@+id/registerPasswordText"
-            android:layout_below="@+id/invalidPasswordLabel"
-            android:layout_marginTop="21dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="54dp"
             android:background="@color/gold"
             android:text="Register" />
 
@@ -83,6 +84,67 @@
             android:layout_below="@+id/registerPasswordText"
             android:text="Missing password"
             android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/registerFirstNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp"
+            android:ems="10"
+            android:hint="First Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registerPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="154dp"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/registerLastNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:ems="10"
+            android:hint="Last Name"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/invalidFirstNameTextLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/registerButton"
+            android:layout_below="@+id/registerFirstNameText"
+            android:text="Missing First Name"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/invalidLastNameTextLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/registerLastNameText"
+            android:layout_centerHorizontal="true"
+            android:text="Missing Last Name"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/invalidPhoneLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/registerButton"
+            android:layout_below="@+id/registerPhone"
+            android:layout_marginTop="-154dp"
+            android:text="Invalid Phone Number"
             android:visibility="invisible" />
 
     </RelativeLayout>

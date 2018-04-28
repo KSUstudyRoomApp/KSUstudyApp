@@ -10,6 +10,8 @@ import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
+import java.util.HashMap;
+
 /**
  * Created by gwhite24 on 3/10/2018.
  */
@@ -31,4 +33,5 @@ public class MainActivity extends AppCompatActivity{
                 .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
                 .build();
     }
+
 }
