@@ -29,8 +29,8 @@ import java.util.HashMap;
  */
 public class LogInActivity extends AppCompatActivity {
 
-    public final String BASE_URL = "http://ksustudyroom.azurewebsites.net/api";
-    RegisterActivity signUp = new RegisterActivity();
+    //public final String BASE_URL = "http://ksustudyroom.azurewebsites.net/api";
+    //RegisterActivity signUp = new RegisterActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
 
-        /*AsyncTask.execute(new Runnable() {
+        AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
                 //get all users api call
@@ -78,7 +78,7 @@ public class LogInActivity extends AppCompatActivity {
 
             }
 
-        });*/
+        });
 
 
 

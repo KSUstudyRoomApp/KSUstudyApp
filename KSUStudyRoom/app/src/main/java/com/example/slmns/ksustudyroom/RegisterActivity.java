@@ -36,8 +36,8 @@ public String getUserName() { return this.userName; }
 public String getEmail(){return this.email;}
 public String getPassword(){return this.password;}
 
-User user = new User();
-LogInActivity signIn = new LogInActivity();
+//User user = new User();
+//LogInActivity signIn = new LogInActivity();
 
 
 
@@ -139,12 +139,12 @@ LogInActivity signIn = new LogInActivity();
                             public void onClick(View view) {
                                 //Intent loginIntent = new Intent(RegisterActivity.this, LogInActivity.class);
                                 //RegisterActivity.this.startActivity(loginIntent);
-                                user.setFirstName(registerFirstName.getText().toString());
+                                /*user.setFirstName(registerFirstName.getText().toString());
                                 user.setLastName(registerLastName.getText().toString());
                                 user.setEmail(registerEmail.getText().toString());
                                 user.setPhone(registerPhone.getText().toString());
                                 user.setUsername(registerUserName.getText().toString());
-                                user.setPassword(registerPassword.getText().toString());
+                                user.setPassword(registerPassword.getText().toString());*/
 
 
                                 /*AsyncTask.execute(new Runnable() {
