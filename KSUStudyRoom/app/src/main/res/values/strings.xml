@@ -18,4 +18,5 @@
     <string name="title_activity_marietta_campus">Marietta Campus</string>
     <string name="addEvent">Add Reservation</string>
     <string name="viewEvent">Show Reservation</string>
+    <string name="timeslotsGreeting">Select a time slot below.</string>
 </resources>
