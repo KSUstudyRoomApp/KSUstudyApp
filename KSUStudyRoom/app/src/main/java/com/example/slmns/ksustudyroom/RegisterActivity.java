@@ -40,7 +40,6 @@ public String getPassword(){return this.password;}
 //LogInActivity signIn = new LogInActivity();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +61,7 @@ public String getPassword(){return this.password;}
         final TextView invalidLastNameLabel =  (TextView) findViewById(R.id.invalidLastNameTextLabel);
         final TextView invalidPhoneLabel =  (TextView) findViewById(R.id.invalidPhoneLabel);
 
+
         //Registers or submits the user's data.
         registerButton.setOnClickListener(new View.OnClickListener(){
 
@@ -69,6 +69,13 @@ public String getPassword(){return this.password;}
             public void onClick(View view) {
                 //--begin validation code
                 boolean missingField = false;
+                User userInfo = new User();
+                String username;
+                String firstName;
+                String lastName;
+                String password;
+                String phone;
+                String email;
 
                 try{
                     if(registerUserName.getText().toString().isEmpty()){
@@ -130,15 +137,131 @@ public String getPassword(){return this.password;}
                     else{
                         //user is created here
                        // createUser(String.valueOf(registerUserName.getText()), String.valueOf(registerEmail.getText()), String.valueOf(registerPassword.getText()));
+                        userInfo.setFirstName(registerFirstName.getText().toString());
+                        userInfo.setEmail(registerEmail.getText().toString());
+                        userInfo.setLastName(registerLastName.getText().toString());
+                        userInfo.setUsername(registerUserName.getText().toString());
+                        userInfo.setPassword(registerPassword.getText().toString());
+                        userInfo.setPhone(registerPhone.getText().toString());
+                        userInfo.setId("");
+
+
 
                         /**
                          * Switches to the login page after registering.
+                         *
                          */
                         registerButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                //Intent loginIntent = new Intent(RegisterActivity.this, LogInActivity.class);
-                                //RegisterActivity.this.startActivity(loginIntent);
+
+
+
+                            }
+
+                        });
+                    }
+                }
+                catch(NullPointerException e){
+                    e.printStackTrace();
+                }
+                //--end of validation code
+
+
+
+            }
+        });
+
+    }
+
+    public void createUser(String userName, String email, String password) {
+
+
+    }
+
+    public class SignUpTask extends AsyncTask<User, Void, Void> {
+        private User user;
+
+        SignUpTask(User user){
+            this.user = user;
+        }
+
+
+        public static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+        User userInfo = new User();
+
+        @Override
+        protected Void doInBackground(User... users){
+            user = users[0];
+            String result = "";
+            String inputLine;
+
+            try {
+                URL url = new URL("http://ksustudyroom.azurewebsites.net/api/users/signup");
+                //URL url = new URL(stringUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+
+                //request headers
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+
+                //String urlParameters = "?"+user;
+
+                //send post request
+                conn.setDoOutput(true);
+                DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+                wr.writeBytes(user.toString());
+                wr.flush();
+                wr.close();
+
+                int responseCode = conn.getResponseCode();
+                System.out.println("\nSending 'POST' request to URL : " + url);
+                System.out.println("Response Code : " + responseCode);
+
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+                //String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                //print in String
+                System.out.println(response.toString());
+                System.out.println("THE OUT OF THE THING IS"+ result);
+
+
+                //System.out.println(result.toString());
+                //loginInfo= jsonArray;
+                //jsonArray.get(1).toString();
+
+            }
+            catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(Void result){
+            super.onPostExecute(result);
+        }
+    }
+
+}
+
+
+
+
+//Intent loginIntent = new Intent(RegisterActivity.this, LogInActivity.class);
+//RegisterActivity.this.startActivity(loginIntent);
                                 /*user.setFirstName(registerFirstName.getText().toString());
                                 user.setLastName(registerLastName.getText().toString());
                                 user.setEmail(registerEmail.getText().toString());
@@ -201,28 +324,3 @@ public String getPassword(){return this.password;}
 
 
                                     }});*/
-
-
-                            }
-
-                        });
-                    }
-                }
-                catch(NullPointerException e){
-                    e.printStackTrace();
-                }
-                //--end of validation code
-
-
-
-            }
-        });
-
-    }
-
-    public void createUser(String userName, String email, String password) {
-
-
-    }
-
-}
