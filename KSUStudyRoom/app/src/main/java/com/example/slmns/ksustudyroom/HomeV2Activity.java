@@ -5,21 +5,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class HomeV2Activity extends AppCompatActivity {
  Button reserveRoomButton;
  Button calendarButton;
  Button chatButton;
  Button studyGroupButton;
+ TextView greeting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_v2);
 
+        User user = new User();
+
+        String firstName ="";
+
+
         this.reserveRoomButton = findViewById(R.id.reserveRoomButton);
         this.calendarButton = findViewById(R.id.calendarButton);
         this.chatButton = findViewById(R.id.chatButton);
         this.studyGroupButton = findViewById(R.id.toStudyGroupsButton);
+        this.greeting = findViewById(R.id.greeting);
+
+        greeting.setText("Hello "+ firstName);
 
         reserveRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override

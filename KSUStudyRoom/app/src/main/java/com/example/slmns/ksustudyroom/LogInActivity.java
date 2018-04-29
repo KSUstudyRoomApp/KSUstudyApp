@@ -51,11 +51,13 @@ public class LogInActivity extends AppCompatActivity {
         final LoginTask loginTask = new LoginTask();
         final LoginTask loginTask1 = new LoginTask();
         final LoginTask loginTask2 = new LoginTask();
+        final LoginTask userInfoTask = new LoginTask();
+
+        //System.out.println("THIS SHOULD BE THE USER'S FIRST NAME"+userInfoTask.userInfo.getFirstName());
 
         JSONArray actualResults = new JSONArray();
 
         final String jsonString;
-
         loginButton.setOnClickListener(new View.OnClickListener() {
              int count =1;
             @Override
@@ -90,6 +92,8 @@ public class LogInActivity extends AppCompatActivity {
                                 invalidLoginPasswordLabel.setVisibility(View.INVISIBLE);
                             }
 
+                            System.out.println("THIS SHOULD BE THE USER'S FIRST NAME"+userInfoTask.userInfo.getFirstName());
+
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -99,6 +103,7 @@ public class LogInActivity extends AppCompatActivity {
                         System.out.print("LOGIN INFO SHOULD BE E IF THIS WAS NULL" + loginInfo);
                         if (loginInfo.contains("id")) {
                             Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
+                            homeIntent.putExtra("USER FIRST NAME", loginInfo);
                             LogInActivity.this.startActivity(homeIntent);
                         }
 
@@ -180,6 +185,7 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
+
         /**
          * Switches to the register page on click.
          */
@@ -208,6 +214,7 @@ public class LogInActivity extends AppCompatActivity {
         public static final String REQUEST_METHOD = "GET";
         public static final int READ_TIMEOUT = 15000;
         public static final int CONNECTION_TIMEOUT = 15000;
+        User userInfo = new User();
 
         @Override
         protected String doInBackground(String... params){
@@ -244,6 +251,26 @@ public class LogInActivity extends AppCompatActivity {
                      result = response.toString();
                     System.out.println("THE OUT OF THE THING IS"+ result);
 
+                    if(!response.equals("null")){
+                        JSONObject json = new JSONObject(result);
+                        System.out.println(json);
+
+                        //issa test
+                        userInfo.firstName = json.getString("firstName");
+
+                        userInfo.setEmail(json.getString("email"));
+                        userInfo.setPassword(json.getString("password"));
+                        userInfo.setFirstName(json.getString("firstName"));
+                        userInfo.setLastName(json.getString("lastName"));
+                        userInfo.setPhone(json.getString("phone"));
+                        userInfo.setUsername(json.getString("username"));
+                        userInfo.setId(json.getString("id"));
+
+
+                        System.out.println("THE EMAIL OF THIS USER IS  "+userInfo.getEmail());
+
+                    }
+
 
                     //System.out.println(result.toString());
                     //loginInfo= jsonArray;
@@ -255,78 +282,17 @@ public class LogInActivity extends AppCompatActivity {
                 }
                 catch (IOException e) {
                     e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-
-                return result;
-            }
-
-        protected void onPostExecute(String result){
-            super.onPostExecute(result);
-        }
-        }
-    public class LoginTask1 extends AsyncTask<String, String, String> {
-
-
-
-        public static final String REQUEST_METHOD = "GET";
-        public static final int READ_TIMEOUT = 15000;
-        public static final int CONNECTION_TIMEOUT = 15000;
-
-        @Override
-        protected String doInBackground(String... params){
-            String stringUrl = params[0];
-            String result = "";
-            String inputLine;
-            String userName=params[0];
-            String password=params[1];
-            //get all users api call
-            try {
-                URL url = new URL("http://ksustudyroom.azurewebsites.net/api/users/login?Username="+userName+"&Password="+password);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-                conn.setRequestMethod("GET");
-                int responseCode = conn.getResponseCode();
-                System.out.println("\nSending 'POST' request to URL : " + url);
-                System.out.println("Response Code : " + responseCode);
-
-                //conn.setDoOutput(true);
-                //OutputStream os = conn.getOutputStream();
-                //os.write("username=vdoe200".getBytes());
-                //os.write("password=Test-ksuApp".getBytes());
-                //os.flush();
-                //os.close();
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                //String inputLine;
-                StringBuffer response = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-                //print in String
-                result = response.toString();
-                System.out.println("THE OUT OF THE THING IS"+ result);
-
-
-                //System.out.println(result.toString());
-                //loginInfo= jsonArray;
-                //jsonArray.get(1).toString();
-
-            }
-            catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
 
             return result;
-        }
+            }
 
         protected void onPostExecute(String result){
             super.onPostExecute(result);
         }
-    }
+        }
 
 
     }
