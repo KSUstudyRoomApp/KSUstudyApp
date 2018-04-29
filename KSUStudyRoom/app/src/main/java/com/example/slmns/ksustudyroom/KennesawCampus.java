@@ -17,11 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -44,7 +39,9 @@ public class KennesawCampus extends AppCompatActivity {
         data = new ArrayList<String>();
         bookingDetailsButton = findViewById(R.id.kennesawBookingButton);
 
-        showRooms();
+        //get rooms
+        getAvailableRooms();
+        
         bookingDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,47 +49,42 @@ public class KennesawCampus extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-
     }
-    private void showRooms() {
+    
+    private void getAvailableRooms() {
         new Thread(new Runnable() {
             public void run() {
                 final StringBuilder builder = new StringBuilder();
-                try {
-                    //current date
-                    Document doc = Jsoup.connect("http://kennesaw.libcal.com/rooms_acc.php?gid=12348").get();
-                    //Custom date used here to show available future rooms since current date is all blacked out. in case below 4/23/18
-                    // Document doc = Jsoup.connect("http://kennesaw.libcal.com/rooms_acc.php?gid=12348&d=2018-04-23&cap=0").get();
-                    // add custom date
-                  /*  String yy = "2018";
-                    String mm = "04";
-                    String dd = "23";
-                    String yymmdd = yy+'-'+mm+'-'+dd;
-                   Document doc = Jsoup.connect("http://kennesaw.libcal.com/rooms_acc.php?gid=12348&d="+yymmdd+"&cap=0").get();*/
+                //current date default
+                //code
+                String subheadTextKennesaw = "Available study rooms at Kennesaw Library.";
+                //get sub heading text
+                builder.append(subheadTextKennesaw);
+                builder.append("\n");
 
-                    //get sub heading text
-                    Element subheadText = doc.getElementById("s-lc-rm-acc-group-desc");
-                    builder.append(subheadText.text());
-                    builder.append("\n");
-                    /*builder.append("date: " + d1);*/
+                //add name of button clicked from previous activity
+                final String selectedCampus = "Kennesaw";
 
-                    //4/22/18 10:15 PM
-                    Element div1 = doc.getElementById("s-lc-rm-right");
-                    Elements form = doc.select("form");
-                    Elements fieldsets = form.select("fieldset");
-                    for(Element f : fieldsets){
-                        Elements inputData = f.select("input");
-                        for (Element hiddenInputs : inputData) {
-                            if (hiddenInputs.attr("value").equals("30")) {//do nothing
-                            } else if (hiddenInputs.attr("type").equals("hidden")) {
-                                data.add(hiddenInputs.attr("value").toString());
-                            }
-                        }
-                    }
-
-                } catch (IOException e) {
-                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                ArrayList<String> kennesawRooms = new ArrayList<String>();
+                kennesawRooms.add("Group Study Room 302J ");
+                kennesawRooms.add("Group Study Room 302H ");
+                kennesawRooms.add("Group Study Room 302G ");
+                kennesawRooms.add("Group Study Room 302E ");
+                kennesawRooms.add("Group Study Room 302D ");
+                kennesawRooms.add("Group Study Room 302C ");
+                kennesawRooms.add("Group Study Room 302B ");
+                kennesawRooms.add("Group Study Room 302A ");
+                kennesawRooms.add("Group Study Room 122 ");
+                kennesawRooms.add("Group Study Room 126");
+                kennesawRooms.add("Collab Tech Room 127");
+                kennesawRooms.add("Collab Tech Room 128");
+                kennesawRooms.add("Collab Tech Room 129");
+                kennesawRooms.add("Collab Tech Room 130");
+                kennesawRooms.add("Collab Tech Room 131");
+                for (String rooms : kennesawRooms) {
+                    data.add(rooms);
                 }
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -103,51 +95,13 @@ public class KennesawCampus extends AppCompatActivity {
             }
         }).start();
     }
-    //Scrape KSU studyrooms WEBSITE
-   /* private void showRooms() {
-        new Thread(new Runnable() {
-            public void run() {
-                final StringBuilder builder = new StringBuilder();
-                try {
-                    //Document doc = Jsoup.connect("http://kennesaw.libcal.com/rooms_acc.php?gid=12348").get();
-                    //Custom date used here to show available future rooms since current date is all blacked out. in case below 4/23/18
-                    Document doc = Jsoup.connect("http://kennesaw.libcal.com/rooms_acc.php?gid=12348&d=2018-04-23&cap=0").get();
-
-                    //get sub heading text
-                    Element subheadText = doc.getElementById("s-lc-rm-acc-group-desc");
-                    builder.append(subheadText.text());
-
-                    //4/22/18 10:15 PM
-                    Element div1 = doc.getElementById("s-lc-rm-right");
-                    Elements form = doc.select("form");
-                    Elements fieldsets = form.select("fieldset");
-                    for(Element f : fieldsets){
-                        //legend
-                        Elements legendh2 = f.select("legend > h2");
-
-                        Elements description = f.select("div");
-                        String divs = description.text();
-                        data.add(legendh2.text() + "\n" + divs);  //add h2
-                    }
-
-                } catch (IOException e) {
-                    builder.append("Error : ").append(e.getMessage()).append("\n");
-                }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        headingTextDescription.setText(builder.toString());
-                        setListAdapter();
-                    }
-                });
-            }
-        }).start();
-    }*/
+    
     private void  setListAdapter(){
         kennesawRoomGroupAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
         kennesawListView = (ListView) findViewById(R.id.listView);
         kennesawListView.setAdapter(kennesawRoomGroupAdapter);
         clickListener();
+        roomClickListener();
     }
 
     //click listener shows preview of item clicked
@@ -163,14 +117,19 @@ public class KennesawCampus extends AppCompatActivity {
 
         );
     }
-    /*@Override
-    public void onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack();
-        }else {
-            super.onBackPressed();
-        }
-    }*/
+    
+    //Roomclick listener shows hours available for room clicked on
+    private void roomClickListener(){
+        kennesawListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
+                selectedRoom = "Group Study Room 302J KSU ROOM TEST";
+                startIntent.putExtra("ROOM_SELECTED",selectedRoom);
+                startActivity(startIntent);
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
