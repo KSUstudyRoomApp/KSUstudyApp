@@ -124,7 +124,7 @@ public class KennesawCampus extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
-                selectedRoom = "Group Study Room 302J KSU ROOM TEST";
+                final String selectedRoom = "Group Study Room 302J KSU ROOM TEST";
                 startIntent.putExtra("ROOM_SELECTED",selectedRoom);
                 startActivity(startIntent);
             }
