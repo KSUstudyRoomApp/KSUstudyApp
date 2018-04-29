@@ -37,15 +37,15 @@ public class StartStudyGroupActivity extends AppCompatActivity {
         final TextView addMemberTextBox = findViewById(R.id.addMemberTextBox);
         final TextView confirmAddedUserText = findViewById(R.id.confirmAddedUserText);
 
-        /**
-         * Add the member and clear the user's name when clicking the add memeber button.
-         */
+
+
+       // Add the member and clear the user's name when clicking the add memeber button.
         addMemberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                groupMembers.add(addMemberTextBox.getText());
+               /* groupMembers.add(addMemberTextBox.getText());
                 confirmAddedUserText.setText(addMemberTextBox.getText() + " will be added to the group");
-                addMemberTextBox.setText("");
+                addMemberTextBox.setText("");*/
             }
         });
 

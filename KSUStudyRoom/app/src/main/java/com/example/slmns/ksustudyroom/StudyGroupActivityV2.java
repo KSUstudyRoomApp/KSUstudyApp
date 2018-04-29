@@ -34,7 +34,8 @@ public class StudyGroupActivityV2 extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<String> listOfStudyGroups = new ArrayList<>();
     private String name;
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("StudyGroups");
+
 
 
     @Override
@@ -54,9 +55,11 @@ public class StudyGroupActivityV2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //updates firebase database chatroom
-                Map<String,Object> map = new HashMap<String,Object>();
+              /*  Map<String,Object> map = new HashMap<String,Object>();
                 map.put(editGroupNameText.getText().toString(),"");
-                root.updateChildren(map);
+                root.updateChildren(map);*/
+              Intent createStudyGroupIntent = new Intent(getApplicationContext(), GroupActivity.class);
+              startActivity(createStudyGroupIntent);
             }
         });
 
@@ -94,7 +97,9 @@ public class StudyGroupActivityV2 extends AppCompatActivity {
 
 
     private void requestUserName() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        /// TODO: 4/29/2018 Figure out what to initialize the user's chat name too. 
+        this.name = "StaticName";
+       /* AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Enter name:");
 
         final EditText input_field = new EditText(this);
@@ -115,6 +120,6 @@ public class StudyGroupActivityV2 extends AppCompatActivity {
             }
         });
 
-        builder.show();
+        builder.show();*/
     }
 }

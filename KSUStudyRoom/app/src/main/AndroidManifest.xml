@@ -41,11 +41,10 @@
         <activity android:name=".HomeV2Activity" />
         <activity android:name=".BookingConfirmationActivity" />
         <activity android:name=".KennesawCampus" />
-        <activity android:name=".PublicMessagingActivity"/>
-        <activity android:name=".StudyGroupActivityV2">
-
-        </activity>
-
+        <activity android:name=".PublicMessagingActivity" />
+        <activity android:name=".StudyGroupActivityV2" />
+        <activity android:name=".GroupActivity" />
+        <activity android:name=".AddMembersActivity"></activity>
     </application>
 
 </manifest>

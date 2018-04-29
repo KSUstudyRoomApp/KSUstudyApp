@@ -43,7 +43,7 @@ public class PublicMessagingActivity extends AppCompatActivity {
         setTitle("Room - "+room_name);
 
         //references the active chat room
-        root = FirebaseDatabase.getInstance().getReference().child(room_name);
+        root = FirebaseDatabase.getInstance().getReference().child("StudyGroups").child(room_name).child("chat");
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
