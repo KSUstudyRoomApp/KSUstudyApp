@@ -25,7 +25,7 @@ public class HomeV2Activity extends AppCompatActivity {
         String lastName = getIntent().getExtras().getString("LAST_NAME");
         String password = getIntent().getExtras().getString("PASSWORD");
         String phone = getIntent().getExtras().getString("PHONE");
-        String username = getIntent().getExtras().getString("USERNAME");
+        final String username = getIntent().getExtras().getString("USERNAME");
         String user_id = getIntent().getExtras().getString("USER_ID");
 
         user.setFirstName(firstName);
@@ -60,6 +60,7 @@ public class HomeV2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent studyGroupIntent = new Intent(getApplicationContext(), StudyGroupActivityV2.class);
+                studyGroupIntent.putExtra("USERNAME", username);
                 startActivity(studyGroupIntent);
             }
         });

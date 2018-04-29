@@ -35,8 +35,7 @@ public class StudyGroupActivityV2 extends AppCompatActivity {
     private ArrayList<String> listOfStudyGroups = new ArrayList<>();
     private String name;
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("StudyGroups");
-
-
+    //String firstName = getIntent().getExtras().getString("FIRST_NAME");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +96,11 @@ public class StudyGroupActivityV2 extends AppCompatActivity {
 
 
     private void requestUserName() {
-        /// TODO: 4/29/2018 Figure out what to initialize the user's chat name too. 
-        this.name = "StaticName";
+        /// TODO: 4/29/2018 Figure out what to initialize the user's chat name too.
+        this.name = getIntent().getExtras().get("USERNAME").toString();
+        //this.name = getIntent().getExtras().getString("USERNAME");
+
+        //group_name = getIntent().getExtras().get("group_name").toString();
        /* AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Enter name:");
 

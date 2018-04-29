@@ -37,7 +37,6 @@ public class GroupActivity extends AppCompatActivity {
     private String groupName;
     private ArrayList<String> listOfGroupMembers = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,26 +53,6 @@ public class GroupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                requestGroupName();
-            }
-        });
-    }
-
-    private void requestGroupName(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle("Enter group name:");
-
-        final EditText input_groupNameField = new EditText(this);
-
-        builder.setView(input_groupNameField);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                groupName = input_groupNameField.getText().toString();
-                  Map<String,Object> map = new HashMap<String,Object>();
-                map.put(groupName,"");
-                studyGroupReference.updateChildren(map);
             }
         });
 
@@ -107,6 +86,28 @@ public class GroupActivity extends AppCompatActivity {
                 startActivity(membersIntent);
             }
         });
+
+    }
+
+    private void requestGroupName(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Enter group name:");
+
+        final EditText input_groupNameField = new EditText(this);
+
+        builder.setView(input_groupNameField);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                groupName = input_groupNameField.getText().toString();
+                  Map<String,Object> map = new HashMap<String,Object>();
+                map.put(groupName,"");
+                studyGroupReference.updateChildren(map);
+            }
+        });
+
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
