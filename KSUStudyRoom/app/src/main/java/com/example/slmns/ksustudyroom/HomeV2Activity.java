@@ -20,7 +20,16 @@ public class HomeV2Activity extends AppCompatActivity {
 
         User user = new User();
 
-        String firstName ="";
+        String firstName = getIntent().getExtras().getString("FIRST_NAME");
+        String email = getIntent().getExtras().getString("EMAIL");
+        String lastName = getIntent().getExtras().getString("LAST_NAME");
+        String password = getIntent().getExtras().getString("PASSWORD");
+        String phone = getIntent().getExtras().getString("PHONE");
+        String username = getIntent().getExtras().getString("USERNAME");
+        String user_id = getIntent().getExtras().getString("USER_ID");
+
+        user.setFirstName(firstName);
+
 
 
         this.reserveRoomButton = findViewById(R.id.reserveRoomButton);

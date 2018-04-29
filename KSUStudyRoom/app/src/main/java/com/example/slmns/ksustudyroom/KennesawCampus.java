@@ -33,6 +33,7 @@ public class KennesawCampus extends AppCompatActivity {
     TextView headingTextDescription;
     Button bookingDetailsButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

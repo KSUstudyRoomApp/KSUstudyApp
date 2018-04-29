@@ -66,7 +66,17 @@ public class LogInActivity extends AppCompatActivity {
                 String loginInfo =  "";
                 String loginInfo1 = "";
                 String loginInfo2 = "";
+
+                String firstName;
+                String email;
+                String lastName;
+                String username;
+                String id;
+                String phone;
+                String password;
+
                 //count = 1;
+                User userInfo = new User();
 
                 System.out.println("LOGIN INFO IS SUPPOSE TO BE NULL HERE"+ loginInfo);
 
@@ -102,9 +112,54 @@ public class LogInActivity extends AppCompatActivity {
 
                         System.out.print("LOGIN INFO SHOULD BE E IF THIS WAS NULL" + loginInfo);
                         if (loginInfo.contains("id")) {
-                            Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
-                            homeIntent.putExtra("USER FIRST NAME", loginInfo);
-                            LogInActivity.this.startActivity(homeIntent);
+
+
+                            JSONObject json = null;
+                            try {
+                                json = new JSONObject(loginInfo);
+
+                                //issa test
+
+                                userInfo.setEmail(json.getString("email"));
+                                userInfo.setPassword(json.getString("password"));
+                                userInfo.setFirstName(json.getString("firstName"));
+                                userInfo.setLastName(json.getString("lastName"));
+                                userInfo.setPhone(json.getString("phone"));
+                                userInfo.setUsername(json.getString("username"));
+                                userInfo.setId(json.getString("id"));
+
+                                email = userInfo.getEmail();
+                                firstName = userInfo.getFirstName();
+                                password = userInfo.getPassword();
+                                lastName = userInfo.getLastName();
+                                phone = userInfo.getPhone();
+                                username = userInfo.getUsername();
+                                id = userInfo.getId();
+
+
+                                Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
+                                homeIntent.putExtra("FIRST_NAME", firstName);
+                                homeIntent.putExtra("EMAIL", email);
+                                homeIntent.putExtra("PASSWORD", password);
+                                homeIntent.putExtra("LAST_NAME", lastName);
+                                homeIntent.putExtra("PHONE", phone);
+                                homeIntent.putExtra("USERNAME", username);
+                                homeIntent.putExtra("USER_ID", id);
+                                LogInActivity.this.startActivity(homeIntent);
+
+                                System.out.println(json);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+
+
+
+
+                                System.out.println("THE EMAIL OF THIS USER IS  "+userInfo.getEmail());
+
+
                         }
 
                     }
@@ -138,10 +193,56 @@ public class LogInActivity extends AppCompatActivity {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            if (loginInfo1.contains("id")) {
+                        if (loginInfo1.contains("id")) {
+
+
+                            JSONObject json = null;
+                            try {
+                                json = new JSONObject(loginInfo1);
+
+                                //issa test
+
+                                userInfo.setEmail(json.getString("email"));
+                                userInfo.setPassword(json.getString("password"));
+                                userInfo.setFirstName(json.getString("firstName"));
+                                userInfo.setLastName(json.getString("lastName"));
+                                userInfo.setPhone(json.getString("phone"));
+                                userInfo.setUsername(json.getString("username"));
+                                userInfo.setId(json.getString("id"));
+
+                                email = userInfo.getEmail();
+                                firstName = userInfo.getFirstName();
+                                password = userInfo.getPassword();
+                                lastName = userInfo.getLastName();
+                                phone = userInfo.getPhone();
+                                username = userInfo.getUsername();
+                                id = userInfo.getId();
+
+
                                 Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
+                                homeIntent.putExtra("FIRST_NAME", firstName);
+                                homeIntent.putExtra("EMAIL", email);
+                                homeIntent.putExtra("PASSWORD", password);
+                                homeIntent.putExtra("LAST_NAME", lastName);
+                                homeIntent.putExtra("PHONE", phone);
+                                homeIntent.putExtra("USERNAME", username);
+                                homeIntent.putExtra("USER_ID", id);
                                 LogInActivity.this.startActivity(homeIntent);
+
+                                System.out.println(json);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
+
+
+
+
+
+
+                            System.out.println("THE EMAIL OF THIS USER IS  "+userInfo.getEmail());
+
+
+                        }
 
                         }
 
@@ -174,8 +275,54 @@ public class LogInActivity extends AppCompatActivity {
 
 
                         if (loginInfo2.contains("id")) {
-                            Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
-                            LogInActivity.this.startActivity(homeIntent);
+
+
+                            JSONObject json = null;
+                            try {
+                                json = new JSONObject(loginInfo2);
+
+                                //issa test
+
+                                userInfo.setEmail(json.getString("email"));
+                                userInfo.setPassword(json.getString("password"));
+                                userInfo.setFirstName(json.getString("firstName"));
+                                userInfo.setLastName(json.getString("lastName"));
+                                userInfo.setPhone(json.getString("phone"));
+                                userInfo.setUsername(json.getString("username"));
+                                userInfo.setId(json.getString("id"));
+
+                                email = userInfo.getEmail();
+                                firstName = userInfo.getFirstName();
+                                password = userInfo.getPassword();
+                                lastName = userInfo.getLastName();
+                                phone = userInfo.getPhone();
+                                username = userInfo.getUsername();
+                                id = userInfo.getId();
+
+
+                                Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
+                                homeIntent.putExtra("FIRST_NAME", firstName);
+                                homeIntent.putExtra("EMAIL", email);
+                                homeIntent.putExtra("PASSWORD", password);
+                                homeIntent.putExtra("LAST_NAME", lastName);
+                                homeIntent.putExtra("PHONE", phone);
+                                homeIntent.putExtra("USERNAME", username);
+                                homeIntent.putExtra("USER_ID", id);
+                                LogInActivity.this.startActivity(homeIntent);
+
+                                System.out.println(json);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+
+
+
+
+                            System.out.println("THE EMAIL OF THIS USER IS  "+userInfo.getEmail());
+
+
                         }
 
                     }
@@ -251,26 +398,6 @@ public class LogInActivity extends AppCompatActivity {
                      result = response.toString();
                     System.out.println("THE OUT OF THE THING IS"+ result);
 
-                    if(!response.equals("null")){
-                        JSONObject json = new JSONObject(result);
-                        System.out.println(json);
-
-                        //issa test
-                        userInfo.firstName = json.getString("firstName");
-
-                        userInfo.setEmail(json.getString("email"));
-                        userInfo.setPassword(json.getString("password"));
-                        userInfo.setFirstName(json.getString("firstName"));
-                        userInfo.setLastName(json.getString("lastName"));
-                        userInfo.setPhone(json.getString("phone"));
-                        userInfo.setUsername(json.getString("username"));
-                        userInfo.setId(json.getString("id"));
-
-
-                        System.out.println("THE EMAIL OF THIS USER IS  "+userInfo.getEmail());
-
-                    }
-
 
                     //System.out.println(result.toString());
                     //loginInfo= jsonArray;
@@ -281,8 +408,6 @@ public class LogInActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
