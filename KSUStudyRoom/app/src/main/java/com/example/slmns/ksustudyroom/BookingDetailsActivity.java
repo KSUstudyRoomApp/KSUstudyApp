@@ -13,11 +13,17 @@ import java.util.ArrayList;
 
 public class BookingDetailsActivity extends AppCompatActivity {
     TextView bookingDataTextString;
+//    String user_id = getIntent().getExtras().getString("USER_ID_1");
+  //  String room_name = getIntent().getExtras().getString("ROOM_NAME");
+    //String timeslot_Id = getIntent().getExtras().getString("TIME_ID");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_details);
+        //final String user_id = getIntent().getExtras().getString("USER_ID");
+
+
 
         //booking details from previous activity
         bookingDataTextString = (TextView) findViewById(R.id.bookingDetailsTextView);
@@ -29,11 +35,14 @@ public class BookingDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), BookingConfirmationActivity.class);
-                String bookingDataTextStringCurrent = getIntent().getExtras().getString("SELECTED_ROOM_AND_TIME");
-                //dataFromPreviousActivity;//"Test ROOM A Test TIME 10-12PM TEST!";
-                startIntent.putExtra("ROOM_AND_TIMES_STRING", bookingDataTextStringCurrent);
                 String roomsTestOnly = getIntent().getExtras().getString("ROOM_SELECTED");//GET ROOM SELECTEDID
                 startIntent.putExtra("ROOM_SELECTED", roomsTestOnly);//pass room selected ID
+                String roomFromPreviousActivityTest = getIntent().getExtras().getString("ROOM_NAME");
+                System.out.println("THE USER ROOM IS "+roomFromPreviousActivityTest);
+                System.out.println("THE USER TIME SLOT ID IS"+getIntent().getExtras().getString("TIME_ID"));
+
+                System.out.println("THE USER ID IS "+getIntent().getExtras().getString("REAL_ID"));
+
 
                 startActivity(startIntent);
             }
@@ -44,9 +53,10 @@ public class BookingDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 final StringBuilder builder = new StringBuilder();
+                //String roomName = getIntent().getExtras().getString("ROOM_SELECTED");
                 //current date default
                 //code
-                String subheadBookingDataHeading = "";//
+                String subheadBookingDataHeading = "BOOKING DETAILS";//
 
                 //get sub heading text
                 builder.append(subheadBookingDataHeading);
@@ -56,7 +66,7 @@ public class BookingDetailsActivity extends AppCompatActivity {
                 /*String dataFromPreviousActivity = getIntent().getExtras().getString("SELECTED_ROOM_AND_TIME");
                 builder.append("\n");
                 builder.append(dataFromPreviousActivity);*/
-                String roomFromPreviousActivityTest = getIntent().getExtras().getString("ROOM_SELECTED");
+                String roomFromPreviousActivityTest = getIntent().getExtras().getString("ROOM_NAME");
                 builder.append("\n");
                 builder.append(roomFromPreviousActivityTest);
 

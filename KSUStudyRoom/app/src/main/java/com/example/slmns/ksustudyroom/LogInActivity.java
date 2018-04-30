@@ -135,6 +135,8 @@ public class LogInActivity extends AppCompatActivity {
                                 username = userInfo.getUsername();
                                 id = userInfo.getId();
 
+                                System.out.println("THE USER ID OF THE THINGY THING THING IS"+ id);
+
 
                                 Intent homeIntent = new Intent(LogInActivity.this, HomeV2Activity.class);
                                 homeIntent.putExtra("FIRST_NAME", firstName);

@@ -35,6 +35,8 @@ public class MariettaCampus extends AppCompatActivity {
     ArrayAdapter<String> mariettaRoomGroupAdapter;
     TextView headingTextDescription;
     Button bookingDetailsButton;
+    //final String next_real = getIntent().getExtras().getString("NEXT_REAL");
+    //final String new_next_real = next_real;
 
 
     @Override
@@ -45,6 +47,7 @@ public class MariettaCampus extends AppCompatActivity {
         //scrap heading text description
         headingTextDescription = (TextView) findViewById(R.id.textView);
         data = new ArrayList<String>();
+
         //bookingDetailsButton = findViewById(R.id.mariettaBookingButton);
 
         String campus = "marietta";
@@ -159,15 +162,23 @@ public class MariettaCampus extends AppCompatActivity {
 
         );
     }
+    String room1;
 
     //Roomclick listener shows hours available for room clicked on
     private void roomClickListener(){
         mariettaListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
-                String selectedRoom = "Group Study Room 302J KSU ROOM TEST";
-                startIntent.putExtra("ROOM_SELECTED",selectedRoom);
+                Intent startIntent = new Intent(getApplicationContext(), AvailableTimes.class);
+                String room = String.valueOf(parent.getItemAtPosition(position));
+                room1 = (String)parent.getItemAtPosition(position);
+                System.out.println("ROOM1"+ room1);
+                //Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
+                startIntent.putExtra("ROOM_SELECTED", room);
+                //startIntent.putExtra("USER_ID_3", getIntent().getExtras().getString("USER_ID_2"));
+                //startIntent.putExtra("FIRST_NAME_3", getIntent().getExtras().getString("FIRST_NAME_2"));
+                //startIntent.putExtra("NEWER_REAL", next_real);
+                //System.out.println("the real id is"+next_real);
                 startActivity(startIntent);
             }
         });

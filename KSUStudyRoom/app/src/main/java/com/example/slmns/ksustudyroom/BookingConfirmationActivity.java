@@ -13,6 +13,9 @@ public class BookingConfirmationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_confirmation);
+        String user_id = getIntent().getExtras().getString("USER_ID_1");
+        String room_name = getIntent().getExtras().getString("ROOM_NAME");
+        String timeslot_Id = getIntent().getExtras().getString("TIME_ID");
 
         this.backHomeButton = findViewById(R.id.backToHomeButton);
         this.backHomeButton.setOnClickListener(new View.OnClickListener() {
@@ -20,15 +23,19 @@ public class BookingConfirmationActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-               /* Intent backHomeIntent = new Intent(getApplicationContext(), HomeV2Activity.class);
-                backHomeIntent.putExtra("FIRST_NAME", firstName);
+
+
+
+               Intent startIntent = new Intent(getApplicationContext(), HomeV2Activity.class);
+                startIntent.putExtra("FIRST_NAME", getIntent().getExtras().getString("FIRST_NAME_BOOKING"));
+                /*backHomeIntent.putExtra("FIRST_NAME", firstName);
                 backHomeIntent.putExtra("EMAIL", email);
                 backHomeIntent.putExtra("PASSWORD", password);
                 backHomeIntent.putExtra("LAST_NAME", lastName);
                 backHomeIntent.putExtra("PHONE", phone);
                 backHomeIntent.putExtra("USERNAME", username);
-                backHomeIntent.putExtra("USER_ID", id);
-                startActivity(backHomeIntent);*/
+                backHomeIntent.putExtra("USER_ID", id); */
+                startActivity(startIntent);
             }
         });
     }

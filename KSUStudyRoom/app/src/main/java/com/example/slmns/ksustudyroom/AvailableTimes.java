@@ -30,10 +30,11 @@ public class AvailableTimes extends AppCompatActivity {
     ArrayList<String> data = new ArrayList<String>();
     TextView headingTextDescription;
     public String newString;
+    ArrayList<String> timeID = new ArrayList<String>();
 
 
     private String selectedTime ;//frank to pass selected room id, selected time id to next activity - use REST API
-    public String selectedRoomAndTimeIDs;
+    public String selectedTimeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +103,7 @@ public class AvailableTimes extends AppCompatActivity {
                     //data.add(rooms);
                 }*/
                 ArrayList<String> timeList = new ArrayList<String>();
+
                 GetTimes times = new GetTimes();
 
                 try {
@@ -111,9 +113,11 @@ public class AvailableTimes extends AppCompatActivity {
                     for(int i=0; i< json.length(); i++){
                         JSONObject jsonObject = json.getJSONObject(i);
                         timeList.add(jsonObject.optString("slots"));
+                        timeID.add(jsonObject.optString("id"));
                         System.out.println("THIS IS A TIME"+timeList.get(i));
                         data.add(timeList.get(i));
                     }
+
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -122,7 +126,6 @@ public class AvailableTimes extends AppCompatActivity {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -150,7 +153,9 @@ public class AvailableTimes extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
-                //selectedTime = "10-12PM TEST!";
+                selectedTime = (String)parent.getItemAtPosition(position);
+                selectedTimeId = timeID.get(position);
+                System.out.println("THE ID OF THIS TIME IS" +selectedTimeId);
 
                // String selectedRm = getIntent().getExtras().getString("ROOM_SELECTED");
                 //startIntent.putExtra("ROOM_SELECTED", selectedTime);
@@ -160,7 +165,11 @@ public class AvailableTimes extends AppCompatActivity {
                 //String selectedRm = getIntent().getExtras().getString("ROOM_SELECTED");
                 //startIntent.putExtra("ROOM_SELECTED", selectedTime);
                 //selectedRoomAndTimeIDs = selectedTime + " " + selectedRm;
+                startIntent.putExtra("ROOM_NAME", getIntent().getExtras().getString("ROOM_SELECTED"));
                 startIntent.putExtra("TIME_SELECTED", selectedTime);
+                startIntent.putExtra("TIME_ID", selectedTimeId);
+                //startIntent.putExtra("USER_ID_4", getIntent().getExtras().getString("USER_ID_3"));
+                startIntent.putExtra("FIRST_NAME_4", getIntent().getExtras().getString("FIRST_NAME_3"));
                 startActivity(startIntent);
             }
         });
