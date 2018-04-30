@@ -20,7 +20,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -40,7 +39,7 @@ public class LogInActivity extends AppCompatActivity {
 
         final EditText loginUsername = (EditText) findViewById(R.id.loginUsernameText);
         final EditText loginPassword = (EditText) findViewById(R.id.loginPasswordText);
-        final Button loginButton = (Button) findViewById(R.id.kennesawBookingButton);
+        final Button loginButton = (Button) findViewById(R.id.mariettaBookingButton);
         final TextView registerLink = (TextView) findViewById(R.id.loginRegisterTextView);
         final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
         final TextView invalidLoginUsernNameLabel = (TextView) findViewById(R.id.invalidLoginUserNameLabel);
