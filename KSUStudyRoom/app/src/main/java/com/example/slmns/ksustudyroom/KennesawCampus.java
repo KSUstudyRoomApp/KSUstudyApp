@@ -1,5 +1,6 @@
 package com.example.slmns.ksustudyroom;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
@@ -17,8 +18,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class KennesawCampus extends AppCompatActivity {
     private WebView webView;
@@ -39,8 +50,48 @@ public class KennesawCampus extends AppCompatActivity {
         data = new ArrayList<String>();
         bookingDetailsButton = findViewById(R.id.kennesawBookingButton);
 
+        String campus = "kennesaw";
+        GetRooms rooms = new GetRooms();
+        ArrayList<String> roomList = new ArrayList<String>();
+
+        final StringBuilder builder = new StringBuilder();
+        //current date default
+        //code
+        String subheadTextKennesaw = "Available study rooms at Kennesaw Library.";
+        //get sub heading text
+        builder.append(subheadTextKennesaw);
+        builder.append("\n");
+
         //get rooms
-        getAvailableRooms();
+
+       //roomList.add(rooms);
+        try {
+            String jsonString = rooms.execute(campus).get();
+            JSONArray json = new JSONArray(jsonString);
+            System.out.println("THIS SHOULD PRINT OUT THE JSONARRAY"+json);
+            for(int i=0; i< json.length(); i++){
+                JSONObject jsonObject = json.getJSONObject(i);
+                roomList.add(jsonObject.optString("roomName"));
+                System.out.println(roomList.get(i));
+                data.add(roomList.get(i));
+            }
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        //getAvailableRooms();
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                headingTextDescription.setText(builder.toString());
+                setListAdapter();
+            }
+        });
         
         bookingDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,5 +202,70 @@ public class KennesawCampus extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public class GetRooms extends AsyncTask<String, Void, String> {
+
+
+
+        public static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+        User userInfo = new User();
+
+        @Override
+        protected String doInBackground(String... params){
+            String stringUrl = params[0];
+            String result = "";
+            String inputLine;
+            String campus=params[0];
+
+            //get all users api call
+            try {
+                URL url = new URL("http://ksustudyroom.azurewebsites.net/api/studyrooms/getrooms?campus="+campus);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+                conn.setRequestMethod("GET");
+                int responseCode = conn.getResponseCode();
+                System.out.println("\nSending 'POST' request to URL : " + url);
+                System.out.println("Response Code : " + responseCode);
+
+                //conn.setDoOutput(true);
+                //OutputStream os = conn.getOutputStream();
+                //os.write("username=vdoe200".getBytes());
+                //os.write("password=Test-ksuApp".getBytes());
+                //os.flush();
+                //os.close();
+
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                //String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                //print in String
+                result = response.toString();
+                System.out.println("THE OUTPUT OF THE THING IS "+ result);
+
+
+                //System.out.println(result.toString());
+                //loginInfo= jsonArray;
+                //jsonArray.get(1).toString();
+
+            }
+            catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+        }
     }
 }
