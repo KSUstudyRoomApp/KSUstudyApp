@@ -18,8 +18,17 @@ public class BookingConfirmationActivity extends AppCompatActivity {
         this.backHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backHomeIntent = new Intent(getApplicationContext(), HomeV2Activity.class);
-                startActivity(backHomeIntent);
+
+
+               /* Intent backHomeIntent = new Intent(getApplicationContext(), HomeV2Activity.class);
+                backHomeIntent.putExtra("FIRST_NAME", firstName);
+                backHomeIntent.putExtra("EMAIL", email);
+                backHomeIntent.putExtra("PASSWORD", password);
+                backHomeIntent.putExtra("LAST_NAME", lastName);
+                backHomeIntent.putExtra("PHONE", phone);
+                backHomeIntent.putExtra("USERNAME", username);
+                backHomeIntent.putExtra("USER_ID", id);
+                startActivity(backHomeIntent);*/
             }
         });
     }
