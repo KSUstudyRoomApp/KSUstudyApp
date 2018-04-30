@@ -1,18 +1,29 @@
 package com.example.slmns.ksustudyroom;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
@@ -22,6 +33,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -145,24 +158,65 @@ public String getPassword(){return this.password;}
                         userInfo.setPhone(registerPhone.getText().toString());
                         userInfo.setId("");
 
+                        JSONObject params2 = new JSONObject();
+                        params2.put("firstName", registerFirstName.getText().toString());
+                        params2.put("lastName", registerLastName.getText().toString());
+                        params2.put("username", registerUserName.getText().toString());
+                        params2.put("password", registerPassword.getText().toString());
+                        params2.put("email", registerEmail.getText().toString());
+                        params2.put("phone", registerPhone.getText().toString());
+
+
+                        String tag_json_obj = "json_obj_req";
+
+                        String url = "http://ksustudyroom.azurewebsites.net/api/users/signup";
+
+
+
+                        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                                url, params2,
+                                new Response.Listener<JSONObject>() {
+
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        //Log.d(TAG, response.toString());
+                                        //pDialog.hide();
+                                    }
+                                }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //VolleyLog.d(TAG, "Error: " + error.getMessage());
+                                //pDialog.hide();
+                            }
+                        }) {
+
+                            @Override
+                            public Map<String, String> getHeaders() {
+                                HashMap<String, String> headers = new HashMap<String, String>();
+                                headers.put("Content-Type", "application/json; charset=utf-8");
+                                return headers;
+                            }
+
+                        };
+
+                        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+
+                        Intent homeIntent = new Intent(getApplicationContext(), LogInActivity.class);
+                        startActivity(homeIntent);
+
 
 
                         /**
                          * Switches to the login page after registering.
                          *
                          */
-                        registerButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
 
-
-
-                            }
-
-                        });
                     }
                 }
                 catch(NullPointerException e){
+                    e.printStackTrace();
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 //--end of validation code
