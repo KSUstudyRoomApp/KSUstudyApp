@@ -56,7 +56,7 @@ public class BookingDetailsActivity extends AppCompatActivity {
                 //CREATING AN INTENT.PUTEXTRA() METHOD SEEMED TO WORK TO THE PAGE THAT IT POINTING TO ASSIGNMENT IN THE BUTTON LISTENERS FOR BOTH PAGES
                 //ASSIGN THE VALUE TO USERID
                 //IF YOU FIND THE ID AND PAST IT IN THE USER ID VARIABLE IT SHOULD WORK
-                String userId=""; //THIS IS THE VARIABLE WE NEED TO GET THE USER ID TO
+                String userId=""; //THIS IS THE VARIABLE WE NEED TO GET THE USER ID TO new_real_id is the name of the variable that has the userid on the ChooseCampus page
                 System.out.println("THE USER ID IS "+getIntent().getExtras().getString("REAL_ID"));
 
                 JSONObject params2 = new JSONObject();
