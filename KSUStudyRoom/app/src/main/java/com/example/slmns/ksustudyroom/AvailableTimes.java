@@ -104,7 +104,7 @@ public class AvailableTimes extends AppCompatActivity {
 
     private void  setListAdapter(){
         availableTimesGroupAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
-        availableTimesListView = (ListView) findViewById(R.id.listView2);
+        //availableTimesListView = (ListView) findViewById(R.id.listView2);
         availableTimesListView.setAdapter(availableTimesGroupAdapter);
         //clickListener();
         roomClickListener();
