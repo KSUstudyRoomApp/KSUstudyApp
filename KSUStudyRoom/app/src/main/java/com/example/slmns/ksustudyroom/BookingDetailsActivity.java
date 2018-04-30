@@ -20,11 +20,11 @@ public class BookingDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booking_details);
 
         //booking details from previous activity
-        bookingDataTextString = (TextView) findViewById(R.id.textView4);
+        bookingDataTextString = (TextView) findViewById(R.id.bookingDetailsTextView);
         getBookingData();
 
         //Booking confirmation
-        Button bookingConfirmation = (Button) findViewById(R.id.reserveRoomBtn);
+        Button bookingConfirmation = (Button) findViewById(R.id.submitBookingButton);
         bookingConfirmation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

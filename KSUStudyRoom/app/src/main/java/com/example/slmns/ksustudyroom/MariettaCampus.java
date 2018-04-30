@@ -45,7 +45,7 @@ public class MariettaCampus extends AppCompatActivity {
         //scrap heading text description
         headingTextDescription = (TextView) findViewById(R.id.textView);
         data = new ArrayList<String>();
-        bookingDetailsButton = findViewById(R.id.mariettaBookingButton);
+        //bookingDetailsButton = findViewById(R.id.mariettaBookingButton);
 
         String campus = "marietta";
         GetRooms rooms = new GetRooms();
@@ -90,13 +90,7 @@ public class MariettaCampus extends AppCompatActivity {
             }
         });
 
-        bookingDetailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
-                startActivity(startIntent);
-            }
-        });
+
     }
 
     private void getAvailableRooms() {
@@ -172,8 +166,8 @@ public class MariettaCampus extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
-                //selectedRoom = "Group Study Room 302J KSU ROOM TEST";
-                //startIntent.putExtra("ROOM_SELECTED",selectedRoom);
+                String selectedRoom = "Group Study Room 302J KSU ROOM TEST";
+                startIntent.putExtra("ROOM_SELECTED",selectedRoom);
                 startActivity(startIntent);
             }
         });

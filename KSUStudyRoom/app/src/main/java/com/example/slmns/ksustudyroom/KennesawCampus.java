@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,6 +47,7 @@ public class KennesawCampus extends AppCompatActivity {
         headingTextDescription = (TextView) findViewById(R.id.textView);
         data = new ArrayList<String>();
         bookingDetailsButton = findViewById(R.id.kennesawBookingButton);
+        String reservedRoom;
 
         String campus = "kennesaw";
         GetRooms rooms = new GetRooms();
@@ -81,6 +83,7 @@ public class KennesawCampus extends AppCompatActivity {
             e.printStackTrace();
         }
         //getAvailableRooms();
+        setListAdapter();
 
         runOnUiThread(new Runnable() {
             @Override
@@ -90,13 +93,7 @@ public class KennesawCampus extends AppCompatActivity {
             }
         });
         
-        bookingDetailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
-                startActivity(startIntent);
-            }
-        });
+
     }
     
     private void getAvailableRooms() {
@@ -148,32 +145,23 @@ public class KennesawCampus extends AppCompatActivity {
         kennesawRoomGroupAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
         kennesawListView = (ListView) findViewById(R.id.listView);
         kennesawListView.setAdapter(kennesawRoomGroupAdapter);
-        clickListener();
+
         roomClickListener();
     }
-
-    //click listener shows preview of item clicked
-    private void clickListener(){
-        kennesawListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String room = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(KennesawCampus.this, room, Toast.LENGTH_LONG).show();
-                    }
-                }
-
-        );
-    }
+    String room1;
     
     //Roomclick listener shows hours available for room clicked on
     private void roomClickListener(){
         kennesawListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
-                //selectedRoom = "Group Study Room 302J KSU ROOM TEST";
-                //startIntent.putExtra("ROOM_SELECTED",selectedRoom);
+                Intent startIntent = new Intent(getApplicationContext(), AvailableTimes.class);
+                String room = String.valueOf(parent.getItemAtPosition(position));
+                room1 = (String)parent.getItemAtPosition(position);
+                System.out.print("ROOM1"+ room1);
+                //Intent startIntent = new Intent(getApplicationContext(), BookingDetailsActivity.class);
+                startIntent.putExtra("ROOM_SELECTED", room);
+                startActivity(startIntent);
                 startActivity(startIntent);
             }
         });
