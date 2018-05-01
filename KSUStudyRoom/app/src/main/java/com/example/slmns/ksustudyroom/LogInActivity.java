@@ -44,7 +44,8 @@ public class LogInActivity extends AppCompatActivity {
         final TextView homePageLink = (TextView) findViewById(R.id.loginToHomeLink);
         final TextView invalidLoginUsernNameLabel = (TextView) findViewById(R.id.invalidLoginUserNameLabel);
         final TextView invalidLoginPasswordLabel = (TextView) findViewById(R.id.invalidLoginPasswordLabel);
-        final TextView toStudyGroupLink = (TextView) findViewById(R.id.toStudyGroupLink);
+        //final TextView toStudyGroupLink = (TextView) findViewById(R.id.toStudyGroupLink);
+        final TextView wrongPassword = findViewById(R.id.invalidPassword);
         final String url = "http://ksustudyroom.azurewebsites.net/api/users/getall";
         final String body = "login?Username="+loginUsername.getText().toString()+"&Password="+loginPassword.getText().toString();
         final LoginTask loginTask = new LoginTask();
@@ -162,6 +163,9 @@ public class LogInActivity extends AppCompatActivity {
 
 
                         }
+                        else{
+                            wrongPassword.setVisibility(View.VISIBLE);
+                        }
 
                     }
 
@@ -244,6 +248,9 @@ public class LogInActivity extends AppCompatActivity {
 
 
                         }
+                        else{
+                            wrongPassword.setVisibility(View.VISIBLE);
+                        }
 
                         }
 
@@ -325,6 +332,9 @@ public class LogInActivity extends AppCompatActivity {
 
 
                         }
+                        else{
+                            wrongPassword.setVisibility(View.VISIBLE);
+                        }
 
                     }
 
@@ -345,12 +355,6 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        toStudyGroupLink.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent studyGroupIntent = new Intent(LogInActivity.this, StartStudyGroupActivity.class);
-                LogInActivity.this.startActivity(studyGroupIntent);
-            }
-        });
 
 
     }
