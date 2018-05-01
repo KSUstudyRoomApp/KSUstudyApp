@@ -35,16 +35,14 @@ public class MariettaCampus extends AppCompatActivity {
     ArrayAdapter<String> mariettaRoomGroupAdapter;
     TextView headingTextDescription;
     Button bookingDetailsButton;
-
+    //final String next_real = getIntent().getExtras().getString("NEXT_REAL");
+    //final String new_next_real = next_real;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marietta_campus);
-
-        //final String next_real = getIntent().getExtras().getString("NEXT_REAL");
-        //final String new_next_real = next_real;
 
         //scrap heading text description
         headingTextDescription = (TextView) findViewById(R.id.textView);
@@ -179,8 +177,7 @@ public class MariettaCampus extends AppCompatActivity {
                 startIntent.putExtra("ROOM_SELECTED", room);
                 //startIntent.putExtra("USER_ID_3", getIntent().getExtras().getString("USER_ID_2"));
                 //startIntent.putExtra("FIRST_NAME_3", getIntent().getExtras().getString("FIRST_NAME_2"));
-                //System.out.println("the real id is"+new_next_real);
-                //startIntent.putExtra("NEWER_REAL", new_next_real);
+                //startIntent.putExtra("NEWER_REAL", next_real);
                 //System.out.println("the real id is"+next_real);
                 startActivity(startIntent);
             }

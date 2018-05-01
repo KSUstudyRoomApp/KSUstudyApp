@@ -47,8 +47,8 @@
         <activity android:name=".StudyGroupActivityV2" />
         <activity android:name=".GroupActivity" />
         <activity android:name=".AvailableTimes" />
-        <activity android:name=".AddMembersActivity">
-        </activity>
+        <activity android:name=".AddMembersActivity"></activity>
+        <activity android:name=".PrivateMessagingActivity"></activity>
     </application>
 
 </manifest>

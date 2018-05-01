@@ -13,11 +13,6 @@ public class HomeV2Activity extends AppCompatActivity {
  Button chatButton;
  Button studyGroupButton;
  TextView greeting;
- String user_id;
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +26,14 @@ public class HomeV2Activity extends AppCompatActivity {
         String password = getIntent().getExtras().getString("PASSWORD");
         String phone = getIntent().getExtras().getString("PHONE");
         final String username = getIntent().getExtras().getString("USERNAME");
-        user_id = getIntent().getExtras().getString("USER_ID");
+        final String user_id = getIntent().getExtras().getString("USER_ID");
+
         final String Real_id = user_id;
 
-        //user_id = Real_id;
+
+
 
         user.setFirstName(firstName);
-        user.setId(Real_id);
 
 
 
