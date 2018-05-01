@@ -46,7 +46,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="71dp"
             android:background="@color/gold"
-            android:text="Chat" />
+            android:text="Chat"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/toStudyGroupsButton"
