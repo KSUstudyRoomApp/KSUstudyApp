@@ -15,7 +15,7 @@ public class ChooseCampusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_campus);
-
+        final Session session = new Session(ChooseCampusActivity.this);
         String real_id = getIntent().getExtras().getString("REAL_ID");
         final String new_real_id = real_id;
 
@@ -25,7 +25,9 @@ public class ChooseCampusActivity extends AppCompatActivity {
         kennesawCampusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                session.setCampusName( "kennesaw" );
                 Intent startIntent = new Intent(getApplicationContext(), KennesawCampus.class);
+
                 //.putExtra("USER_ID_2", getIntent().getExtras().getString("USER_ID_1"));
                 startIntent.putExtra("FIRST_NAME_2", getIntent().getExtras().getString("FIRST_NAME_1"));
 
@@ -40,6 +42,7 @@ public class ChooseCampusActivity extends AppCompatActivity {
         mariettaCampusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                session.setCampusName("marietta" );
                 Intent startIntent = new Intent(getApplicationContext(), MariettaCampus.class);
                 //startIntent.putExtra("USER_ID_2", getIntent().getExtras().getString("USER_ID_1"));
                 startIntent.putExtra("FIRST_NAME_2", getIntent().getExtras().getString("FIRST_NAME_1"));

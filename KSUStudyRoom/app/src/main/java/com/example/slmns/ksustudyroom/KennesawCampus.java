@@ -42,7 +42,7 @@ public class KennesawCampus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kennesaw_campus);
-
+        final Session session = new Session(KennesawCampus.this);
         //scrap heading text description
         headingTextDescription = (TextView) findViewById(R.id.textView);
         data = new ArrayList<String>();
@@ -73,6 +73,7 @@ public class KennesawCampus extends AppCompatActivity {
                 roomList.add(jsonObject.optString("roomName"));
                 System.out.println(roomList.get(i));
                 data.add(roomList.get(i));
+                session.setRoomId(roomList.get(i));
             }
         }
         catch (JSONException e) {

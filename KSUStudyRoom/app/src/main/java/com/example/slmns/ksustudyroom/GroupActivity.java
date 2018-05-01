@@ -36,6 +36,7 @@ public class GroupActivity extends AppCompatActivity {
     private DatabaseReference studyGroupReference = FirebaseDatabase.getInstance().getReference().child("StudyGroups");
     private String groupName;
     private ArrayList<String> listOfGroupMembers = new ArrayList<>();
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class GroupActivity extends AppCompatActivity {
 
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listOfUsersGroups);
         groupListView.setAdapter(arrayAdapter);
+        this.username = getIntent().getExtras().get("username").toString();
 
         this.createStudGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +84,7 @@ public class GroupActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent membersIntent = new Intent(getApplicationContext(), AddMembersActivity.class);
                 membersIntent.putExtra("group_name",((TextView)view).getText().toString());
-                //membersIntent.putExtra("username",name);
+                membersIntent.putExtra("username",username);
                 startActivity(membersIntent);
             }
         });

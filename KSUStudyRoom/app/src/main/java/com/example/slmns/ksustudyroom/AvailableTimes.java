@@ -41,6 +41,7 @@ public class AvailableTimes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_times);
         headingTextDescription = (TextView) findViewById(R.id.timeSlotTextView);
+        final Session session = new Session(AvailableTimes.this);
 
         final StringBuilder builder = new StringBuilder();
 
@@ -71,6 +72,8 @@ public class AvailableTimes extends AppCompatActivity {
     }
 
     private void getAvailableTimes() {
+        final Session session = new Session(AvailableTimes.this);
+
         new Thread(new Runnable() {
             public void run() {
                 final StringBuilder builder = new StringBuilder();
@@ -116,6 +119,7 @@ public class AvailableTimes extends AppCompatActivity {
                         timeID.add(jsonObject.optString("id"));
                         System.out.println("THIS IS A TIME"+timeList.get(i));
                         data.add(timeList.get(i));
+                        session.setTimeSlotId(timeList.get(i)  );
                     }
 
                 }

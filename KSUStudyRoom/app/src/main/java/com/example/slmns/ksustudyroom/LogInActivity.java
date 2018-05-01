@@ -52,6 +52,7 @@ public class LogInActivity extends AppCompatActivity {
         final LoginTask loginTask1 = new LoginTask();
         final LoginTask loginTask2 = new LoginTask();
         final LoginTask userInfoTask = new LoginTask();
+        final Session session = new Session(LogInActivity.this);
 
         //System.out.println("THIS SHOULD BE THE USER'S FIRST NAME"+userInfoTask.userInfo.getFirstName());
 
@@ -127,6 +128,12 @@ public class LogInActivity extends AppCompatActivity {
                                 userInfo.setPhone(json.getString("phone"));
                                 userInfo.setUsername(json.getString("username"));
                                 userInfo.setId(json.getString("id"));
+
+                                session.setId(json.getString( "id" ));
+
+                                session.setFirstName( json.getString( "firstName" ) );
+
+                                session.setUserName( json.getString( "username" ) );
 
                                 email = userInfo.getEmail();
                                 firstName = userInfo.getFirstName();
@@ -214,6 +221,11 @@ public class LogInActivity extends AppCompatActivity {
                                 userInfo.setPhone(json.getString("phone"));
                                 userInfo.setUsername(json.getString("username"));
                                 userInfo.setId(json.getString("id"));
+                                session.setId(json.getString( "id" ));
+
+                                session.setFirstName( json.getString( "firstName" ) );
+
+                                session.setUserName( json.getString( "username" ) );
 
                                 email = userInfo.getEmail();
                                 firstName = userInfo.getFirstName();
@@ -298,6 +310,11 @@ public class LogInActivity extends AppCompatActivity {
                                 userInfo.setPhone(json.getString("phone"));
                                 userInfo.setUsername(json.getString("username"));
                                 userInfo.setId(json.getString("id"));
+                                session.setId(json.getString( "id" ));
+
+                                session.setFirstName( json.getString( "firstName" ) );
+
+                                session.setUserName( json.getString( "username" ) );
 
                                 email = userInfo.getEmail();
                                 firstName = userInfo.getFirstName();

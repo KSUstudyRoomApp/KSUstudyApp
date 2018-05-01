@@ -26,26 +26,18 @@ public class BookingDetailsActivity extends AppCompatActivity {
 //    String user_id = getIntent().getExtras().getString("USER_ID_1");
   //  String room_name = getIntent().getExtras().getString("ROOM_NAME");
     //String timeslot_Id = getIntent().getExtras().getString("TIME_ID");
-    User user1 = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_details);
+        final Session session = new Session( BookingDetailsActivity.this);
         //final String user_id = getIntent().getExtras().getString("USER_ID");
-        final String next_real = getIntent().getExtras().getString("NEXT_REAL");
-        final String new_next_real = next_real;
-
-
 
 
 
         //booking details from previous activity
         bookingDataTextString = (TextView) findViewById(R.id.bookingDetailsTextView);
-        System.out.println(user1.getId());
-        HomeV2Activity homeV2Activity = new HomeV2Activity();
-        String userID = homeV2Activity.user_id;
-        System.out.println("is this really going to work"+userID);
         getBookingData();
 
         //Booking confirmation
@@ -65,15 +57,21 @@ public class BookingDetailsActivity extends AppCompatActivity {
                 //CREATING AN INTENT.PUTEXTRA() METHOD SEEMED TO WORK TO THE PAGE THAT IT POINTING TO ASSIGNMENT IN THE BUTTON LISTENERS FOR BOTH PAGES
                 //ASSIGN THE VALUE TO USERID
                 //IF YOU FIND THE ID AND PAST IT IN THE USER ID VARIABLE IT SHOULD WORK
-                String userId="f9bdfa77-bef8-424e-8fb3-a84ff973d402"; //THIS IS THE VARIABLE WE NEED TO GET THE USER ID TO new_real_id is the name of the variable that has the userid on the ChooseCampus page
-                System.out.println("THE USER ID IS "+new_next_real);
+                String userId=""; //THIS IS THE VARIABLE WE NEED TO GET THE USER ID TO new_real_id is the name of the variable that has the userid on the ChooseCampus page
+                System.out.println("THE USER ID IS "+getIntent().getExtras().getString("REAL_ID"));
 
                 JSONObject params2 = new JSONObject();
                 try {
-                    params2.put("roomId",roomFromPreviousActivityTest);
-                    params2.put("timeSlotId", Timeid);
-                    params2.put("userId", userId);
-                    params2.put("campusName", "Kennesaw");
+                   /* params2.put("roomId",roomFromPreviousActivityTest);
+                    params2.put("timeslotId", Timeid);
+                    params2.put("userId", userId);*/
+                    params2.put("roomname",session.GetRoomId());
+
+                    params2.put("slot", session.GetTimeSlotId());
+
+                    params2.put("userid", session.GetUserId());
+
+                    params2.put("campusname",session.GetCampusName());
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
