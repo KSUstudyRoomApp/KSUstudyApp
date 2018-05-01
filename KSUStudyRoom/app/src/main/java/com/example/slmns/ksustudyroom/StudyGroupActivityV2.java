@@ -58,7 +58,6 @@ public class StudyGroupActivityV2 extends AppCompatActivity {
                 map.put(editGroupNameText.getText().toString(),"");
                 root.updateChildren(map);*/
               Intent createStudyGroupIntent = new Intent(getApplicationContext(), GroupActivity.class);
-              createStudyGroupIntent.putExtra("username",name);
               startActivity(createStudyGroupIntent);
             }
         });

@@ -1,17 +1,14 @@
 package com.example.slmns.ksustudyroom;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,7 +31,6 @@ public class AddMembersActivity extends AppCompatActivity {
     private String memberName;
     private ArrayList<String> listOfMembers = new ArrayList<>();
     private ListView memberListView;
-    private String username;
     //private DatabaseReference memberReference = FirebaseDatabase.getInstance().getReference().child("StudyGroups").child("Member");
     private DatabaseReference memberReference;
     @Override
@@ -48,7 +44,7 @@ public class AddMembersActivity extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listOfMembers);
         memberListView.setAdapter(arrayAdapter);
 
-        this.username = getIntent().getExtras().get("username").toString();
+
         group_name = getIntent().getExtras().get("group_name").toString();
         setTitle("StudyGroup: " + group_name);
 
@@ -80,16 +76,6 @@ public class AddMembersActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-
-        this.memberListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent chatRoomIntent = new Intent(getApplicationContext(), PrivateMessagingActivity.class);
-                chatRoomIntent.putExtra("room_name",((TextView)view).getText().toString());
-                chatRoomIntent.putExtra("username",username);
-                startActivity(chatRoomIntent);
             }
         });
 
