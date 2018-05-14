@@ -197,13 +197,13 @@ public class AvailableTimes extends AppCompatActivity {
 
             //get all users api call
             try {
-                URL url = new URL("http://ksustudyroom.azurewebsites.net/api/studyrooms/getavailabletime?roomId="+roomId);
+                URL url = new URL("http://ksustudyroom.azurewebsites.net/api/studyrooms/getavailabletime?roomId="+roomId+"&checkindate="+"");
                 System.out.println(url);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("User-Agent", "Mozilla/5.0");
                 conn.setRequestMethod("GET");
                 int responseCode = conn.getResponseCode();
-                System.out.println("\nSending 'POST' request to URL : " + url);
+                //System.out.println("\nSending 'POST' request to URL : " + url);
                 System.out.println("Response Code : " + responseCode);
 
                 //conn.setDoOutput(true);
