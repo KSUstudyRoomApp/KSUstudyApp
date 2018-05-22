@@ -35,10 +35,10 @@ dependencies {
     //Sign in UI Library
     implementation 'com.android.support:appcompat-v7:26.+'
     implementation('com.amazonaws:aws-android-sdk-auth-ui:2.6.+@aar') { transitive = true; }
-    api 'com.google.firebase:firebase-messaging:15.0.0'
+    api 'com.google.firebase:firebase-messaging:15.0.2'
     implementation 'com.firebaseui:firebase-ui:3.3.1'
     implementation files('libs/jsoup-1.11.2.jar')
-    implementation 'com.google.firebase:firebase-core:15.0.0'
+    implementation 'com.google.firebase:firebase-core:15.0.2'
     implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
     //implementation 'org.apache.httpcomponents:httpclient:4.5.5'
     //implementation 'org.apache.httpcomponents:fluent-hc:4.5.5'
